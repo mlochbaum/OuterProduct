@@ -33,4 +33,4 @@ times ← ×
 &'
 &'Done with this demo!
 &'When the next section begins, run
-&']demo /app/Outer  ⍝ Not actually defined yet. Come back later!
+&']demo /app/Outer
