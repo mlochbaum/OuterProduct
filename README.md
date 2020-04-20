@@ -1,6 +1,10 @@
 # OuterProduct
 LambdaConf 2019 talk "Outer Product as an Introduction to APL and a Pretty Cool Thing in General"
 
+[Watch the talk](https://www.youtube.com/watch?v=WlUHw4hC4OY) (2 hr 25 min)
+
+[View slides](https://mlochbaum.github.io/OuterProduct/)
+
 To use:
 
 ```
