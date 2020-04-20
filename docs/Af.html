@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .apl { padding:4px 18px; margin:0px; }
+    </style>
+</head>
+<body>
+<h2>Lists</h2>
+<p style="margin-top:-20px"><em>Two or more</em> arguments with no functions in between form a list.</p>
+<pre class="apl d3">
+      <span class="Constant">2</span> <span class="Constant">0</span> <span class="Constant">1</span> <span class="Constant">9</span>
+<span class="Result">2 0 1 9</span>
+</pre>
+<pre class="apl d3">
+
+      <span class="String">'λ'</span> <span class="Delimiter">(</span><span class="Constant">4.5</span> <span class="Constant">2.2</span><span class="Delimiter">)</span> <span class="String">'string'</span>
+<span class="Result">λ 4.5 2.2  string</span>
+</pre>
+<pre class="apl d3">
+      <span class="Identifier">]box</span> <span class="Normal">on</span>
+<span class="Result">Was OFF</span>
+      <span class="String">'λ'</span> <span class="Delimiter">(</span><span class="Constant">4.5</span> <span class="Constant">2.2</span><span class="Delimiter">)</span> <span class="String">'string'</span>
+<span class="Result">┌─┬───────┬──────┐
+│λ│4.5 2.2│string│
+└─┴───────┴──────┘</span>
+</pre>
+<p class="d3">Two or more characters, or none, enclosed in quotes form a list of characters, but exactly one character is not a list.</p>
+<script src="d3/d3.v5.min.js"></script>
+<script>
+var li = 0,
+    apl = d3.selectAll(".d3");
+document.onclick = function() {
+    apl.filter((_,i)=>i===li).transition().duration(200).style("opacity",1);
+    li++;
+}
+</script>
+<script src="keys.js"></script>
+</body>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .haskell.d3 { margin:0px; }
+    </style>
+</head>
+<body>
+<h2>Functor outer product</h2>
+<pre class='haskell'>
+<span class="Identifier">outer</span> <span class="Operator">::</span> <span class="Delimiter">(</span><span class="Type">Functor</span> l<span class="Delimiter">,</span> <span class="Type">Functor</span> r<span class="Delimiter">)</span>
+      <span class="Operator">=&gt;</span> <span class="Delimiter">(</span>a<span class="Operator">-&gt;</span>b<span class="Operator">-&gt;</span>c<span class="Delimiter">)</span> <span class="Operator">-&gt;</span> l a <span class="Operator">-&gt;</span> r b <span class="Operator">-&gt;</span> l <span class="Delimiter">(</span>r c<span class="Delimiter">)</span>
+</pre>
+<p>We replace the list constructors <code class='haskell Delimiter'>[]</code> with functors. The result nests two functors—note that we now keep track of which is which.</p>
+<pre class='haskell d3'>
+<span class="Prompt">λ&gt;</span> <span class="Type">let</span> outer f x y <span class="Operator">=</span> fmap <span class="Delimiter">(</span><span class="Operator">\</span>a <span class="Operator">-&gt;</span> fmap <span class="Delimiter">(</span>f a<span class="Delimiter">)</span> y<span class="Delimiter">)</span> x
+<span class="Prompt">λ&gt;</span> outer <span class="Delimiter">(</span><span class="Operator">*</span><span class="Delimiter">)</span> <span class="Delimiter">[</span><span class="Constant">1</span><span class="Delimiter">,</span><span class="Constant">2</span><span class="Delimiter">,</span><span class="Constant">3</span><span class="Delimiter">]</span> <span class="Delimiter">(</span><span class="Type">Just</span> <span class="Constant">3</span><span class="Delimiter">)</span>
+<span class="Delimiter">[</span><span class="Type">Just</span> <span class="Constant">3</span><span class="Delimiter">,</span><span class="Type">Just</span> <span class="Constant">6</span><span class="Delimiter">,</span><span class="Type">Just</span> <span class="Constant">9</span><span class="Delimiter">]</span>
+<span class="Prompt">λ&gt;</span> outer <span class="Delimiter">(</span><span class="Operator">*</span><span class="Delimiter">)</span> <span class="Delimiter">[</span><span class="Constant">1</span><span class="Delimiter">,</span><span class="Constant">2</span><span class="Delimiter">,</span><span class="Constant">3</span><span class="Delimiter">]</span> <span class="Type">Nothing</span>
+<span class="Delimiter">[</span><span class="Type">Nothing</span><span class="Delimiter">,</span><span class="Type">Nothing</span><span class="Delimiter">,</span><span class="Type">Nothing</span><span class="Delimiter">]</span>
+</pre><pre class='haskell d3'>
+<span class="Prompt">λ&gt;</span> <span class="Delimiter">(</span>outer <span class="Delimiter">(</span><span class="Operator">\</span>a b <span class="Operator">-&gt;</span> <span class="Delimiter">[</span>a<span class="Delimiter">,</span>b<span class="Delimiter">])</span> <span class="Delimiter">(</span><span class="Constant">1</span><span class="Operator">+</span><span class="Delimiter">)</span> <span class="Delimiter">(</span><span class="Constant">2</span><span class="Operator">*</span><span class="Delimiter">))</span> <span class="Constant">3</span> <span class="Constant">4</span>
+<span class="Delimiter">[</span><span class="Constant">4</span><span class="Delimiter">,</span><span class="Constant">8</span><span class="Delimiter">]</span>
+</pre>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

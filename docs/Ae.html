@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        body { font-size:50px }
+	p,ul { margin-top: 52px }
+        .faint { color: #777275; font-size:40px; opacity:0 }
+    </style>
+</head>
+<body>
+<h2>Kinds of arguments</h2>
+<p class="faint">Dyalog has objects and namespaces and some other things, but we're not interested in those.</p>
+<p>From the user's perspective, there are only two kinds of data:</p>
+<ul>
+    <li><strong>Numbers</strong>, which are complex using 64-bit IEEE binary floats for the components</li>
+    <li><strong>Characters</strong>, which are unicode code points (in a unicode interpreter)</li>
+</ul>
+<p class="faint">Dyalog APL provides the option to use 128-bit decimal floats for real numbers instead, which makes everything really complicated.</p>
+<p class="d3">And another thing…</p>
+<script src="d3/d3.v5.min.js"></script>
+<script>
+var li = 0;
+document.onclick = function() {
+    if (li == 0)
+        d3.selectAll(".faint").transition().duration(400).style("opacity",1);
+    else
+        d3.selectAll(".d3").transition().duration(300).style("opacity",1);
+    li++;
+}
+</script>
+<script src="keys.js"></script>
+</body>

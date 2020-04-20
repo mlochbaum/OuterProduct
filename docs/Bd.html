@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style> body { font-size: 32px; } </style>
+</head>
+<body>
+<h2>Chinese menu</h2>
+<pre class="apl" style="margin-top:-10px">
+      <span class="Normal">meat</span> <span class="Statement">←</span> <span class="String">'Chicken'</span> <span class="String">'Pork'</span> <span class="String">'Beef'</span>
+      <span class="Normal">style</span> <span class="Statement">←</span> <span class="String">'fried rice'</span> <span class="String">'lo mein'</span> <span class="String">'and broccoli'</span> <span class="String">'with black bean sauce'</span>
+      <span class="Normal">meat</span> <span class="Operator">∘.</span><span class="Special">{⍺</span><span class="Type">,</span><span class="String">' '</span><span class="Type">,</span><span class="Special">⍵}</span> <span class="Normal">style</span>
+<span class="Result">┌──────────────────┬───────────────┬────────────────────┬─────────────────────────────┐
+│Chicken fried rice│Chicken lo mein│Chicken and broccoli│Chicken with black bean sauce│
+├──────────────────┼───────────────┼────────────────────┼─────────────────────────────┤
+│Pork fried rice   │Pork lo mein   │Pork and broccoli   │Pork with black bean sauce   │
+├──────────────────┼───────────────┼────────────────────┼─────────────────────────────┤
+│Beef fried rice   │Beef lo mein   │Beef and broccoli   │Beef with black bean sauce   │
+└──────────────────┴───────────────┴────────────────────┴─────────────────────────────┘</span>
+</pre>
+<pre class="apl d3">
+      <span class="Type">↑,</span><span class="PreProc">⌿</span> <span class="Delimiter">(</span><span class="Constant">12</span> <span class="Constant">13</span> <span class="Constant">14</span><span class="Operator">∘.</span><span class="Type">+</span><span class="Constant">100</span><span class="Type">×</span><span class="Constant">1</span><span class="Type">+⍳</span><span class="Constant">4</span><span class="Delimiter">)</span> <span class="Type">,</span><span class="Operator">∘</span><span class="Type">⊂</span><span class="PreProc">¨</span> <span class="Normal">meat</span> <span class="Operator">∘.</span><span class="Special">{⍺</span><span class="Type">,</span><span class="String">' '</span><span class="Type">,</span><span class="Special">⍵}</span> <span class="Normal">style</span>
+<span class="Result">┌───┬─────────────────────────────┬───┬──────────────────────────┬───┬──────────────────────────┐
+│112│Chicken fried rice           │113│Pork fried rice           │114│Beef fried rice           │
+├───┼─────────────────────────────┼───┼──────────────────────────┼───┼──────────────────────────┤
+│212│Chicken lo mein              │213│Pork lo mein              │214│Beef lo mein              │
+├───┼─────────────────────────────┼───┼──────────────────────────┼───┼──────────────────────────┤
+│312│Chicken and broccoli         │313│Pork and broccoli         │314│Beef and broccoli         │
+├───┼─────────────────────────────┼───┼──────────────────────────┼───┼──────────────────────────┤
+│412│Chicken with black bean sauce│413│Pork with black bean sauce│414│Beef with black bean sauce│
+└───┴─────────────────────────────┴───┴──────────────────────────┴───┴──────────────────────────┘</span>
+</pre>
+<script src="d3/d3.v5.min.js"></script>
+<script>
+document.onclick = function() {
+    d3.select(".d3").transition().duration(400).style("opacity",1);
+}
+</script>
+<script src="keys.js"></script>
+</body>

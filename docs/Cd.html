@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>Arrays versus nested lists</h2>
+<p style="margin-top:-10px">The Split (<code class="Type">↓</code>) primitive turns an array into an array of lists, reducing its rank by one and introducing an extra level of nesting.</p>
+<pre class="apl" style="font-size:38px; line-height:45px">
+      <span class="Constant">2</span> <span class="Constant">3</span> <span class="Constant">5</span><span class="Type">⍴</span><span class="Constant">⎕A</span>  <span class="Comment">⍝ Rank 3 array</span>
+<span class="Result">ABCDE
+FGHIJ                         <span class="Type">↓</span><span class="Constant">2</span> <span class="Constant">3</span> <span class="Constant">5</span><span class="Type">⍴</span><span class="Constant">⎕A</span>  <span class="Comment">⍝ Rank 2 array of lists</span>
+KLMNO                   ┌─────┬─────┬─────┐
+                        │ABCDE│FGHIJ│KLMNO│
+PQRST                   ├─────┼─────┼─────┤
+UVWXY                   │PQRST│UVWXY│ZABCD│
+ZABCD                   └─────┴─────┴─────┘</span>
+
+      <span class="Type">↓↓</span><span class="Constant">2</span> <span class="Constant">3</span> <span class="Constant">5</span><span class="Type">⍴</span><span class="Constant">⎕A</span>  <span class="Comment">⍝ List of lists of lists</span>
+<span class="Result">┌───────────────────┬───────────────────┐
+│┌─────┬─────┬─────┐│┌─────┬─────┬─────┐│
+││ABCDE│FGHIJ│KLMNO│││PQRST│UVWXY│ZABCD││
+│└─────┴─────┴─────┘│└─────┴─────┴─────┘│
+└───────────────────┴───────────────────┘</span>
+</pre>
+<script src="keys.js"></script>
+</body>

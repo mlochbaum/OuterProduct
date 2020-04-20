@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .haskell.d3 { padding:4px 18px; margin:0px; }
+    </style>
+</head>
+<body>
+<h2>A Haskell outer product</h2>
+<pre class='haskell'>
+<span class="Identifier">outer</span> <span class="Operator">::</span> <span class="Delimiter">(</span>a<span class="Operator">-&gt;</span>b<span class="Operator">-&gt;</span>c<span class="Delimiter">)</span> <span class="Operator">-&gt;</span> <span class="Delimiter">[</span>a<span class="Delimiter">]</span> <span class="Operator">-&gt;</span> <span class="Delimiter">[</span>b<span class="Delimiter">]</span> <span class="Operator">-&gt;</span> <span class="Delimiter">[[</span>c<span class="Delimiter">]]</span>
+</pre><pre class='haskell d3'>
+<span class="Prompt">λ&gt;</span> <span class="Type">let</span> outer f xs ys <span class="Operator">=</span> map <span class="Delimiter">(</span><span class="Operator">\</span>x <span class="Operator">-&gt;</span> map <span class="Delimiter">(</span>f x<span class="Delimiter">)</span> ys<span class="Delimiter">)</span> xs
+<span class="Prompt">λ&gt;</span> outer <span class="Delimiter">(</span><span class="Operator">*</span><span class="Delimiter">)</span> <span class="Delimiter">[</span><span class="Constant">1</span><span class="Delimiter">,</span><span class="Constant">2</span><span class="Delimiter">,</span><span class="Constant">3</span><span class="Delimiter">]</span> <span class="Delimiter">[</span><span class="Constant">1</span><span class="Delimiter">,</span><span class="Constant">2</span><span class="Delimiter">,</span><span class="Constant">3</span><span class="Delimiter">]</span>
+<span class="Delimiter">[[</span><span class="Constant">1</span><span class="Delimiter">,</span><span class="Constant">2</span><span class="Delimiter">,</span><span class="Constant">3</span><span class="Delimiter">]</span><span class="Delimiter">,</span><span class="Delimiter">[</span><span class="Constant">2</span><span class="Delimiter">,</span><span class="Constant">4</span><span class="Delimiter">,</span><span class="Constant">6</span><span class="Delimiter">]</span><span class="Delimiter">,</span><span class="Delimiter">[</span><span class="Constant">3</span><span class="Delimiter">,</span><span class="Constant">6</span><span class="Delimiter">,</span><span class="Constant">9</span><span class="Delimiter">]]</span>
+</pre><pre class='haskell d3'>
+<span class="Prompt">λ&gt;</span> outer <span class="Delimiter">(</span><span class="Operator">^^</span><span class="Delimiter">)</span> <span class="Delimiter">(</span>map <span class="Delimiter">((</span><span class="Constant">1</span><span class="Operator">+</span><span class="Delimiter">)</span><span class="Operator">.</span><span class="Delimiter">(</span><span class="Operator">/</span><span class="Constant">100</span><span class="Delimiter">))</span> <span class="Delimiter">[</span><span class="Constant">3</span><span class="Delimiter">,</span><span class="Constant">5</span><span class="Delimiter">,</span><span class="Constant">7</span><span class="Delimiter">])</span> <span class="Delimiter">[</span><span class="Constant">1</span><span class="Delimiter">,</span><span class="Constant">2</span><span class="Delimiter">,</span><span class="Constant">3</span><span class="Delimiter">,</span><span class="Constant">4</span><span class="Delimiter">]</span>
+<span class="Delimiter">[[</span><span class="Constant">1.03</span><span class="Delimiter">,</span><span class="Constant">1.0609</span><span class="Delimiter">,</span><span class="Constant">1.092727</span><span class="Delimiter">,</span><span class="Constant">1.12550881</span><span class="Delimiter">]</span><span class="Delimiter">,</span><span class="Delimiter">[</span><span class="Constant">1.05</span><span class="Delimiter">,</span><span class="Constant">1.1025</span><span class="Delimiter">,</span><span class="Constant">1.157625</span>...
+</pre>
+<div class="d3">
+<p style="margin-top:54px; margin-bottom:-20px">Not so different from APL's outer product on lists:</p>
+<pre class='apl'>
+      <span class="Delimiter">(</span><span class="Constant">1</span> <span class="Type">+</span> <span class="Constant">100</span> <span class="Type">÷</span><span class="PreProc">⍨</span> <span class="Constant">3</span> <span class="Constant">5</span> <span class="Constant">7</span><span class="Delimiter">)</span>  <span class="Operator">∘.</span><span class="Type">*</span>  <span class="Constant">1</span><span class="Type">+⍳</span><span class="Constant">4</span>
+<span class="Result">1.03 1.0609 1.092727 1.12550881
+1.05 1.1025 1.157625 1.21550625
+1.07 1.1449 1.225043 1.31079601</span>
+</pre>
+</div>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

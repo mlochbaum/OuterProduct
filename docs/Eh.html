@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>The <code class='haskell'>on</code> combinator</h2>
+<pre class='haskell'>
+<span class="Prompt">λ&gt;</span> <span class="Type">let</span> outer f x y <span class="Operator">=</span> fmap <span class="Delimiter">(</span><span class="Operator">\</span>a <span class="Operator">-&gt;</span> fmap <span class="Delimiter">(</span>f a<span class="Delimiter">)</span> y<span class="Delimiter">)</span> x
+<span class="Prompt">λ&gt;</span> <span class="Type">let</span> self f x <span class="Operator">=</span> f x x    <span class="Comment">-- Like ⍨ from APL</span>
+<span class="Prompt">λ&gt;</span> <span class="Type">let</span> on <span class="Operator">=</span> self <span class="Operator">.</span> outer
+</pre>
+<p><code class="haskell">on</code> is identical to the combinator provided by <code class='haskell'>Data.Function</code>.</p>
+<pre class='haskell d3'>
+<span class="Prompt">λ&gt;</span> sortBy <span class="Delimiter">(</span>compare <span class="Operator">`on`</span> snd<span class="Delimiter">)</span> <span class="Delimiter">[(</span><span class="Constant">1</span><span class="Delimiter">,</span><span class="String">&quot;c&quot;</span><span class="Delimiter">)</span><span class="Delimiter">,</span><span class="Delimiter">(</span><span class="Constant">3</span><span class="Delimiter">,</span><span class="String">&quot;a&quot;</span><span class="Delimiter">)</span><span class="Delimiter">,</span><span class="Delimiter">(</span><span class="Constant">4</span><span class="Delimiter">,</span><span class="String">&quot;d&quot;</span><span class="Delimiter">)]</span>
+<span class="Delimiter">[(</span><span class="Constant">3</span><span class="Delimiter">,</span><span class="String">&quot;a&quot;</span><span class="Delimiter">)</span><span class="Delimiter">,</span><span class="Delimiter">(</span><span class="Constant">1</span><span class="Delimiter">,</span><span class="String">&quot;c&quot;</span><span class="Delimiter">)</span><span class="Delimiter">,</span><span class="Delimiter">(</span><span class="Constant">4</span><span class="Delimiter">,</span><span class="String">&quot;d&quot;</span><span class="Delimiter">)]</span>
+</pre>
+<div class="d3">
+<p>The same functionality in APL:</p>
+<pre class="apl" style="margin-bottom:0px;">
+      <span class="Normal">on</span> <span class="Statement">←</span> <span class="Special">{</span> <span class="Delimiter">(</span><span class="Special">⍵⍵</span> <span class="Special">⍺</span><span class="Delimiter">)</span> <span class="Special">⍺⍺</span> <span class="Delimiter">(</span><span class="Special">⍵⍵</span> <span class="Special">⍵</span><span class="Delimiter">)</span> <span class="Special">}</span>  <span class="Comment">⍝ Proposed Over (⍥) operator</span>
+      <span class="String">'ra'</span> <span class="Type">,</span> <span class="Normal">on</span> <span class="Type">⌽</span> <span class="String">'yar'</span>
+<span class="Result">array</span>
+</div>
+</pre>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

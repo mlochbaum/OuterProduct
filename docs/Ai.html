@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>Functions as arguments?</h2>
+<p>Besides arguments and functions, APL has <strong>operators</strong> which take functions as <strong>operands</strong>, forming functions which are then free to act on arguments.</p>
+<p>For example, the Commute operator exchanges the arguments when called with two of them (I pronounce this "swap") or duplicates the argument, placing it on the left and right, if there is only one ("self").</p>
+<pre class="apl" style="font-size:52px">
+      <span class="Constant">2</span> <span class="Type">-</span><span class="PreProc">⍨</span> <span class="Constant">5</span>
+<span class="Result">3</span>
+      <span class="Type">-</span><span class="PreProc">⍨</span> <span class="Constant">4</span>
+<span class="Result">0</span>
+</pre>
+<p>The <strong>derived function</strong> produced by <span class="PreProc">⍨</span> can be called either monadically or dyadically, but its operand is always called dyadically!</p>
+<script src="keys.js"></script>
+</body>

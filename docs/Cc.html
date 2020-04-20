@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>Array shape</h2>
+<p>The <strong>shape</strong> (<code><span class="Type">⍴</span></code>) of such an array is the list of all the lengths of the lists used to form it. The length of this list is called its <strong>rank</strong>.</p>
+<pre class='apl'>
+      <span class="Type">⍴</span> <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">2</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">,</span> <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">3</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">,</span> <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">4</span><span class="Delimiter">)</span>
+<span class="Result">2 3 4</span>
+</pre>
+<p>The shape of an outer product of two arrays is found by combining the shapes of the two arrays.</p>
+<pre class='apl'>
+      <span class="Type">⍴</span> <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">2</span> <span class="Constant">3</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">,</span> <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">4</span> <span class="Constant">5</span><span class="Delimiter">)</span>
+<span class="Result">2 3 4 5</span>
+</pre>
+<p>
+    The shape function transforms the monoid of arrays under
+    <code><span class="Operator">∘.</span><span class="Type">,</span></code>
+    to the monoid of lists of natural numbers under
+    <code class="Type">,</code> . We know
+    <code><span class="Operator">∘.</span><span class="Type">,</span></code>
+    is associative because
+    <code class="Type">,</code> is!
+</p>
+<script src="keys.js"></script>
+</body>

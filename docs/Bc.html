@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>Character equality</h2>
+<pre class="apl" style="margin:140px 0px">
+      <span class="String">'abcd'</span> <span class="Operator">∘.</span><span class="Type">=</span> <span class="String">'cabbage'</span>
+<span class="Result">0 1 0 0 1 0 0
+0 0 1 1 0 0 0
+1 0 0 0 0 0 0
+0 0 0 0 0 0 0</span>
+
+      <span class="Type">+</span><span class="PreProc">/</span> <span class="String">'abcd'</span> <span class="Operator">∘.</span><span class="Type">=</span> <span class="String">'cabbage'</span>
+<span class="Result">2 2 1 0</span>
+</pre>
+<p>The operator <code class="PreProc">/</code> performs a fold or reduction; <code class="PreProc">/</code> works along rows while <code class="PreProc">⌿</code> works along columns.</p>
+<script src="keys.js"></script>
+</body>

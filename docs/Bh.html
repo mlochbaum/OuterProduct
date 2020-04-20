@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        pre { font-size:40px; line-height:45px; }
+    </style>
+</head>
+<body>
+<h2>Commutativity</h2>
+<pre class="apl">
+      <span class="Special">{</span><span class="Delimiter">(</span><span class="Special">⍵</span><span class="Delimiter">)(</span><span class="Type">⍉</span><span class="Special">⍵</span><span class="Delimiter">)</span><span class="Special">}</span> <span class="Operator">∘.</span><span class="Type">&lt;</span><span class="PreProc">⍨</span> <span class="Type">⍳</span><span class="Constant">4</span>
+<span class="Result">┌───────┬───────┐
+│0 1 1 1│0 0 0 0│
+│0 0 1 1│1 0 0 0│
+│0 0 0 1│1 1 0 0│
+│0 0 0 0│1 1 1 0│
+└───────┴───────┘</span>
+      <span class="Special">{</span><span class="Delimiter">(</span><span class="Special">⍵</span><span class="Delimiter">)(</span><span class="Type">⍉</span><span class="Special">⍵</span><span class="Delimiter">)</span><span class="Special">}</span> <span class="Operator">∘.</span><span class="Type">=</span><span class="PreProc">⍨</span> <span class="Type">⍳</span><span class="Constant">4</span>
+<span class="Result">┌───────┬───────┐
+│1 0 0 0│1 0 0 0│
+│0 1 0 0│0 1 0 0│
+│0 0 1 0│0 0 1 0│
+│0 0 0 1│0 0 0 1│
+└───────┴───────┘</span>
+      <span class="Special">{⍵</span><span class="Type">≡⍉</span><span class="Special">⍵}</span> <span class="Operator">∘.</span><span class="Type">=</span><span class="PreProc">⍨</span> <span class="Type">⍳</span><span class="Constant">4</span>
+<span class="Result">1</span>
+</pre>
+<p><code class="Normal">f</code> is commutative on the list <code class="Normal">x</code> if and only if <code><span class="Operator">∘.</span><span class="Normal">f</span><span class="PreProc">⍨</span> <span class="Normal">x</span></code> is symmetric (<code><span class="Special">{⍵</span><span class="Type">≡⍉</span><span class="Special">⍵}</span></code>).</p>
+<script src="keys.js"></script>
+</body>

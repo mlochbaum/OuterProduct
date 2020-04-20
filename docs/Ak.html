@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        table {
+            margin: 110px auto 80px;
+            font-size: 62px;
+            line-height: 160%;
+            border-style: none solid;
+            border-color: #bf7160;
+            border-spacing: 0px 10px;
+            background-color: #f7efed;
+            border-width: 7px;
+            padding: 26px 60px 40px;
+            width: 92%;
+        }
+        th { padding-bottom:26px; }
+        td { text-align: center; }
+        tr:nth-child(even) { background-color: #fdf7f5; }
+        code { background-color: transparent; }
+
+        .PreProc,.Operator { position: relative; }
+        .PreProc:after  { content: "‹1 "; }
+        .Operator:after { content: "‹2›"; }
+        .PreProc:after,.Operator:after {
+            position: absolute;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: -3px;
+            top: 1.1em;
+            left: -2px;
+            opacity: 0;
+        }
+        .PreProc.active:after,.Operator.active:after { opacity: 0.9; }
+    </style>
+</head>
+<body>
+<h2>Parsing precedence</h2>
+<table>
+    <tr><th>Step     </th>    <th>Examples</th>    <th>Ordering</th></tr>
+    <tr><td>stranding</td>    <td><code><span class="Constant">3.2</span> <span class="Constant">¯1</span> <span class="String">'c'</span> <span class="Delimiter">(</span><span class="Constant">1</span><span class="Type">+</span><span class="Constant">3</span><span class="Delimiter">)</span></code></td>  <td>associative</td></tr>
+    <tr><td>operators</td>    <td><code><span class="Type">-</span><span class="PreProc">/</span><span class="PreProc">⍨</span><span class="Operator">∘</span><span class="Constant">¯2</span><span class="Operator">∘</span><span class="Type">⌽</span>                                                                           </code></td>  <td>left-to-right</td></tr>
+    <tr><td>functions</td>    <td><code><span class="Type">-</span> <span class="Constant">4</span> <span class="Type">×</span> <span class="Constant">2</span> <span class="Type">,</span> <span class="Constant">3</span>                                                                           </code></td>  <td>right-to-left</td></tr>
+</table>
+<p>The result of stranding is always an argument, while the result of operator evaluation is always a function.</p>
+<script src="d3/d3.v5.min.js"></script>
+<script>
+document.onclick = function() {
+    d3.selectAll(".PreProc,.Operator").classed("active",true);
+}
+</script>
+<script src="keys.js"></script>
+</body>

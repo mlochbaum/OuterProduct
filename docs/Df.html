@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style> pre { margin-bottom: 0px; margin-top: 0px; } </style>
+</head>
+<body>
+<h2>Dyadic functions with Rank</h2>
+<p>The result of Membership (<code class="Type">∊</code>) says, for each element of the left argument, whether it appears in the right argument.</p>
+<pre class="apl">
+      <span class="String">'rank'</span> <span class="Type">∊</span> <span class="String">'array'</span>
+<span class="Result">1 1 0 0</span>
+
+      <span class="String">'rank'</span> <span class="Type">∊</span> <span class="Type">↑</span><span class="String">'array'</span> <span class="String">'shape'</span> <span class="String">'bound'</span>  <span class="Comment">⍝ A 3 by 5 table</span>
+<span class="Result">1 1 1 0</span>
+</pre>
+<div class="d3">
+<p>Using Rank we can ask about membership in multiple arrays separately.</p>
+<pre class="apl">
+      <span class="String">'rank'</span> <span class="Type">∊</span><span class="Operator">⍤</span><span class="Constant">1</span> <span class="Type">↑</span><span class="String">'array'</span> <span class="String">'shape'</span> <span class="String">'bound'</span>
+<span class="Result">1 1 0 0
+0 1 0 0
+0 0 1 0</span>
+</pre>
+</div>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

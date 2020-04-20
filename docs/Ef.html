@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        pre { margin:40px 0px; }
+    </style>
+</head>
+<body>
+<h2>The <code class='haskell'><span class="Delimiter">(</span><span class="Operator">-&gt;</span><span class="Delimiter">)</span>a</code> functor</h2>
+
+<p>Here's <code class='haskell'>fmap</code>'s type signature on the functor <code class='haskell'>(</span><span class="Operator">-&gt;</span><span class="Delimiter">)</span>a</code>:</p>
+<pre class='haskell'>
+<span class="Identifier">fmap</span> <span class="Operator">::</span> <span class="Delimiter">(</span>b <span class="Operator">-&gt;</span> c<span class="Delimiter">)</span> <span class="Operator">-&gt;</span> <span class="Delimiter">((</span><span class="Operator">-&gt;</span><span class="Delimiter">)</span>a b<span class="Delimiter">)</span> <span class="Operator">-&gt;</span> <span class="Delimiter">((</span><span class="Operator">-&gt;</span><span class="Delimiter">)</span>a c<span class="Delimiter">)</span>
+</pre>
+<p>Or with a more readable syntax:</p>
+<pre class='haskell'>
+<span class="Identifier">fmap</span> <span class="Operator">::</span> <span class="Delimiter">(</span>b <span class="Operator">-&gt;</span> c<span class="Delimiter">)</span> <span class="Operator">-&gt;</span> <span class="Delimiter">(</span>a <span class="Operator">-&gt;</span> b<span class="Delimiter">)</span> <span class="Operator">-&gt;</span> <span class="Delimiter">(</span>a <span class="Operator">-&gt;</span> c<span class="Delimiter">)</span>
+</pre>
+<div class='d3'>
+<p>Applied with <code class='haskell'>b</code> and <code class='haskell'>c</code> equal to <code class='haskell'><span class="Type">Int</span></code> and <code class='haskell'>a</code> equal to <code class='haskell'><span class="Delimiter">[</span><span class="Type">Int</span><span class="Delimiter">]</span></code>:</p>
+<pre class='haskell'>
+<span class="Prompt">λ&gt;</span> <span class="Delimiter">(</span>fmap <span class="Delimiter">(</span><span class="Constant">-1</span> <span class="Operator">+</span><span class="Delimiter">)</span> length<span class="Delimiter">)</span> <span class="Delimiter">[</span><span class="Constant">0</span><span class="Delimiter">,</span><span class="Constant">1</span><span class="Delimiter">,</span><span class="Constant">2</span><span class="Delimiter">,</span><span class="Constant">3</span><span class="Delimiter">,</span><span class="Constant">4</span><span class="Delimiter">]</span>
+<span class="Constant">4</span>
+</pre>
+<p>So 
+<code class='haskell'>fmap f</code> sends
+<code class='haskell'>g</code> to
+<code class='haskell'>f <span class="Operator">.</span> g</code>.
+</p>
+</div>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

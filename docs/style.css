@@ -1,0 +1,122 @@
+.d3 {
+    opacity: 0;
+}
+
+body {
+    font-size: 46px;
+    color: #222222;
+    padding: 0px 10px;
+}
+
+p {
+    line-height: 1.36;
+    margin: 34px 0px;
+}
+
+h1 {
+    font-size: 100px;
+    text-align: center;
+}
+h1.center {
+    margin-top:450px;
+}
+
+h2 {
+    font-size: 64px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+h3 {
+    font-size: 50px;
+    line-height: 1;
+    text-align: center;
+}
+
+ul {
+    padding: 0px 80px;
+}
+
+li {
+    line-height: 1.39;
+    margin: 30px;
+}
+
+li pre {
+    margin: 0px;
+}
+
+.vcenter {
+    display: table-cell;
+    vertical-align: middle;
+}
+svg.center {
+    display: block;
+    margin-left:auto; margin-right:auto;
+}
+
+code {
+    background-color: #fcf5f3;
+    padding-left: 0.05em;
+    padding-right: 0.05em;
+}
+.apl {
+    font-family: monospace;
+    border-style: none solid;
+    border-color: #bf7160;
+    background-color: #f7efed;
+    border-width: 7px;
+    padding: 18px;
+}
+.Constant   { color: #74393b; }
+.String     { color: #45665a; }
+.Type       { color: #6d546a; } /* Function */
+.Operator   { color: #896b48; } /* Dyadic op */
+.PreProc    { color: #81824e; } /* Monadic op */
+.Normal     { color: #415262; } /* Name */
+.Delimiter  { color: #635a5a; }
+.Special    { color: #176a5a; } /* dfn */
+.Identifier { color: #415262; } /* ⎕ */
+.Statement  { color: #0e0e0e; } /* Assignment */
+.Comment    { color: #748278; } /* #657762 */
+.Result     { color: #333333; }
+/* Brighter originals
+#884345
+#51786a
+#80637d
+#a17e55
+#959656
+#4d6073
+#756a6a
+#1b7d6a
+#4d6073
+#111111
+#778c73
+#3c3c3c
+*/
+
+code.haskell {
+    background-color: #f3f5f6;
+}
+pre.haskell {
+    font-family: monospace;
+    border-style: none solid;
+    border-color: #6798c7;
+    background-color: #f0f2f5;
+    border-width: 7px;
+    padding: 18px;
+    line-height: 1.34;
+}
+.haskell             { color: #3d4047; }
+.haskell .Prompt     { color: #548bbf; }
+.haskell .Constant   { color: #804740; }
+.haskell .Operator   { color: #998640; } /* #80637d */
+.haskell .Type       { color: #498068; }
+.haskell .Statement  { color: #176a5a; }
+.haskell .Identifier { color: #71506e; } /* Declaration target */
+.haskell .Delimiter  { color: #6b696f; }
+
+tspan {
+    fill: currentColor;
+}
+svg text { cursor: default; }

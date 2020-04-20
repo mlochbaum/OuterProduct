@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+	p { margin: 74px 0px }
+    </style>
+</head>
+<body>
+<h2>Magic</h2>
+<p style="margin-top:130px">APL functions work on lists:</p>
+<pre class="apl">
+      <span class="Constant">3</span> <span class="Constant">2</span> <span class="Constant">1</span> <span class="Type">×</span> <span class="Constant">2</span> <span class="Constant">4</span> <span class="Constant">6</span>
+<span class="Result">6 8 6</span>
+
+      <span class="String">'λ'</span> <span class="Delimiter">(</span><span class="Constant">4.5</span> <span class="Constant">2.2</span><span class="Delimiter">)</span> <span class="String">'string'</span> <span class="Type">=</span> <span class="String">'r'</span>
+<span class="Result">┌─┬───┬───────────┐
+│0│0 0│0 0 1 0 0 0│
+└─┴───┴───────────┘</span>
+</pre>
+<p>Stranding binds more tightly than function application.</p>
+<script src="keys.js"></script>
+</body>

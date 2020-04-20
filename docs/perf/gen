@@ -1,0 +1,9 @@
+#! /bin/env sh
+
+./Plot min 1
+./Plot min
+./Plot plus
+./Plot times
+./Plot lt
+./Plot and
+./Plot ne

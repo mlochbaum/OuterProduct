@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .apl { margin:0px; }
+    </style>
+</head>
+<body>
+<h2>Reducing</h2>
+<pre class="apl">
+      <span class="Normal">cantor</span> <span class="Statement">←</span> <span class="Special">{</span> <span class="Type">,</span> <span class="Type">⊃</span> <span class="Operator">∘.</span><span class="Type">×</span><span class="PreProc">/</span> <span class="Special">⍵</span> <span class="Type">⍴</span> <span class="Type">⊂</span><span class="Constant">1</span> <span class="Constant">0</span> <span class="Constant">1</span> <span class="Special">}</span>
+</pre>
+<p>Power and Reduce can both express "the outer product of <code class="Special">⍵</code> copies of <code class="Constant">1 0 1</code>".</p>
+<pre class="apl d3">
+      <span class="Constant">3</span> <span class="Type">⍴</span> <span class="Type">⊂</span><span class="Constant">1</span> <span class="Constant">0</span> <span class="Constant">1</span>  <span class="Comment">⍝ The normal Cantor rule</span>
+<span class="Result">┌─────┬─────┬─────┐
+│1 0 1│1 0 1│1 0 1│
+└─────┴─────┴─────┘</span>
+</pre><pre class="apl d3">
+      <span class="Type">⊢</span><span class="Normal">l</span> <span class="Statement">←</span> <span class="Special">{</span><span class="Type">⊂</span><span class="Constant">1</span><span class="Type">,</span><span class="Delimiter">(</span><span class="Special">⍵</span><span class="Type">⍴</span><span class="Constant">0</span><span class="Delimiter">)</span><span class="Type">,</span><span class="Constant">1</span><span class="Special">}</span><span class="Operator">⍤</span><span class="Constant">0</span> <span class="Type">⍳</span><span class="Constant">3</span>  <span class="Comment">⍝ A list of different rules</span>
+<span class="Result">┌───┬─────┬───────┐
+│1 1│1 0 1│1 0 0 1│
+└───┴─────┴───────┘</span>
+</pre><pre class="apl d3">
+      <span class="Type">,</span> <span class="Type">⊃</span> <span class="Operator">∘.</span><span class="Type">×</span><span class="PreProc">/</span> <span class="Normal">l</span>
+<span class="Result">1 0 0 1 0 0 0 0 1 0 0 1 1 0 0 1 0 0 0 0 1 0 0 1</span>
+</pre>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

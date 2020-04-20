@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        table.large {
+            width: 82%;
+            margin: 160px auto 0px;
+            font-size: 66px;
+            line-height: 150%;
+            border-style: none solid;
+            border-color: #bf7160;
+            border-spacing: 0px;
+            background-color: #f7efed;
+            border-width: 7px;
+            padding: 40px 60px;
+        }
+        table.small {
+            margin: 0px auto;
+            font-size: 28px;
+            letter-spacing: -1px;
+            font-family: monospace;
+            line-height: 90%;
+            border-spacing: 0px;
+        }
+        td { text-align: center; }
+        tr:nth-child(odd) { background-color: #fdf7f5; }
+        .left { text-align: left; width: 22%; padding-left:30px; }
+        code { background-color: transparent; }
+    </style>
+</head>
+<body>
+<h2>Array attributes</h2>
+<table class="large">
+    <tr><td class="left">array</td>    <td><code><span class="Type">⊢</span>                                                          </code></td>  <td><code><span class="Operator">∘.</span><span class="Type">,</span></code></td> <td><code><span class="Type">⊂</span><span class="Constant">⍬</span></code></td> <td><table class="Constant small"><tr><td>6 6</td></tr><tr><td>3 8</td></tr><tr><td>7 2</td></tr></table></td></tr>
+    <tr><td class="left">shape</td>    <td><code><span class="Type">⍴</span>                                                          </code></td>  <td><code><span class="Type">,</span>                                </code></td> <td><code><span class="Constant">⍬</span>                           </code></td> <td><code><span class="Constant">3</span> <span class="Constant">2</span></code></td></tr>
+    <tr><td class="left">bound</td>    <td><code><span class="Type">×</span><span class="PreProc">/</span><span class="Type">⍴</span> </code></td>  <td><code><span class="Type">×</span>                                </code></td> <td><code><span class="Constant">1</span>                           </code></td> <td><code><span class="Constant">6</span>                                </code></td></tr>
+    <tr><td class="left">tally</td>    <td><code><span class="Type">≢</span>                                                          </code></td>  <td><code><span class="Type">⊣</span>                                </code></td> <td><code><span class="Type">?</span>                               </code></td> <td><code><span class="Constant">3</span>                                </code></td></tr>
+    <tr><td class="left">rank </td>    <td><code><span class="Type">≢⍴</span>                                                         </code></td>  <td><code><span class="Type">+</span>                                </code></td> <td><code><span class="Constant">0</span>                           </code></td> <td><code><span class="Constant">2</span>                                </code></td></tr>
+</table>
+<script src="keys.js"></script>
+</body>

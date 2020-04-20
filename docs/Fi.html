@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .apl { margin:0px; }
+        p { margin-bottom:14px; }
+    </style>
+</head>
+<body>
+<h2>Counting weird ways</h2>
+<p>List all three-digit numbers using only the digits 2, 4, and 6.</p>
+<pre class="apl">
+      <span class="Type">,</span> <span class="Type">⊃</span> <span class="Operator">∘.</span><span class="Type">+</span><span class="PreProc">/</span> <span class="Type">⊖</span> <span class="Type">↓</span> <span class="Delimiter">(</span><span class="Constant">10</span> <span class="Type">*</span> <span class="Type">⍳</span><span class="Constant">3</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">×</span> <span class="Constant">2</span> <span class="Constant">4</span> <span class="Constant">6</span>
+<span class="Result">222 224 226 242 244 246 262 264 266 422 424 426 442 444 446 462…</span>
+</pre>
+<div class="d3">
+<p>Find the sum of the digits of each of the first 1000 numbers.</p>
+<pre class="apl">
+      <span class="Type">,</span> <span class="Type">⊃</span> <span class="Operator">∘.</span><span class="Type">+</span><span class="PreProc">/</span> <span class="Constant">3</span> <span class="Type">⍴</span> <span class="Type">⊂</span> <span class="Type">⍳</span><span class="Constant">10</span>
+<span class="Result">0 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9 10 2 3 4 5 6 7 8 9 10 11 3…</span>
+</pre>
+</div><div class="d3">
+<p>List the numbers with three or fewer digits in base 3, none of which are 1.</p>
+<pre class="apl">
+      <span class="Type">,</span> <span class="Type">⊃</span> <span class="Operator">∘.</span><span class="Type">+</span><span class="PreProc">/</span> <span class="Type">⊖</span> <span class="Type">↓</span> <span class="Delimiter">(</span><span class="Constant">3</span> <span class="Type">*</span> <span class="Type">⍳</span><span class="Constant">3</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">×</span> <span class="Constant">0</span> <span class="Constant">2</span>
+<span class="Result">0 2 6 8 18 20 24 26</span>
+</pre>
+</div>
+<pre class="apl d3">
+      <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">3</span><span class="Type">*</span><span class="Constant">3</span><span class="Delimiter">)</span> <span class="Type">∊</span> <span class="Type">,</span> <span class="Type">⊃</span> <span class="Operator">∘.</span><span class="Type">+</span><span class="PreProc">/</span> <span class="Type">⊖</span> <span class="Type">↓</span> <span class="Delimiter">(</span><span class="Constant">3</span> <span class="Type">*</span> <span class="Type">⍳</span><span class="Constant">3</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">×</span> <span class="Constant">0</span> <span class="Constant">2</span>
+<span class="Result">1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 1 0 1</span>
+</pre>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

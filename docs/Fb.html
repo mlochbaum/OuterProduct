@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        svg { display:block; margin:60px auto 0px; }
+    </style>
+</head>
+<body>
+<h2>The Cantor set</h2>
+<p>The Cantor set is the limit of an iterative process, or more precisely the intersection of an infinite sequence of sets. Each step is a set composed of intervals: to get the next one, remove the middle third from each interval.</p>
+<svg height="280" width="1800"></svg>
+<p class="d3">Forget about that infinite limit stuff: we only care about the first few iterations!</p>
+<p class="d3" style="margin-top:70px;">Mathematical descriptions of the Cantor set are awkward and don't seem to arise from or provide any useful intuition. Can APL do better?</p>
+<script src="d3/d3.v5.min.js"></script>
+<script src="d3/d3-selection-multi.v1.min.js"></script>
+<script src="Fb.js"></script>
+<script>
+var li = 0;
+document.onclick = function() {
+    d3.selectAll(".d3").filter((_,i)=>i===li)
+        .transition().duration(li?300:0)
+        .style("opacity",1);
+    li++;
+}
+</script>
+<script src="keys.js"></script>
+</body>

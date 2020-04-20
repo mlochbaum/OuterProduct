@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>Functors</h2>
+<pre class='haskell'>
+<span class="Type">class</span> <span class="Type">Functor</span> f <span class="Type">where</span>
+    <span class="Identifier">fmap</span> <span class="Operator">::</span> <span class="Delimiter">(</span>a <span class="Operator">-&gt;</span> b<span class="Delimiter">)</span> <span class="Operator">-&gt;</span> f a <span class="Operator">-&gt;</span> f b
+</pre>
+<p><code class='haskell'>f</code> transforms types to types, and <code class='haskell'>fmap</code> brings functions along. If <code class='haskell'>f</code> represents a container like <code class='haskell Delimiter'>[]</code>, then <code class='haskell'>fmap</code> applies functions "inside" the container.</p>
+<pre class='haskell d3'>
+<span class="Prompt">λ&gt;</span> fmap <span class="Delimiter">(</span><span class="Constant">1</span><span class="Operator">+</span><span class="Delimiter">)</span> <span class="Operator">$</span> <span class="Type">Just</span> <span class="Constant">5</span>
+<span class="Type">Just</span> <span class="Constant">6</span>
+</pre>
+<div class='d3'>
+<p>Rules for <code class='haskell'>fmap</code> (same as monoid transformation rules!):</p>
+<pre class='haskell'>
+fmap id       <span style="letter-spacing:-4px">←→</span>  id
+fmap <span class="Delimiter">(</span>g <span class="Operator">.</span> h<span class="Delimiter">)</span>  <span style="letter-spacing:-4px">←→</span>  <span class="Delimiter">(</span>fmap g<span class="Delimiter">)</span> <span class="Operator">.</span> <span class="Delimiter">(</span>fmap h<span class="Delimiter">)</span>
+</pre>
+</div>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

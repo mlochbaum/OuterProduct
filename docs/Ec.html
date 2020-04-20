@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>Decomposing the outer product</h2>
+<pre class='haskell'>
+rmap <span class="Operator">=</span> <span class="Operator">\</span>f x ys <span class="Operator">-&gt;</span> map <span class="Delimiter">(</span><span class="Operator">\</span>y <span class="Operator">-&gt;</span> f x y<span class="Delimiter">)</span> ys
+     <span class="Operator">=</span> <span class="Operator">\</span>f x    <span class="Operator">-&gt;</span> map <span class="Delimiter">(</span>f x<span class="Delimiter">)</span>
+     <span class="Operator">=</span> map <span class="Operator">.</span>
+
+lmap <span class="Operator">=</span> flip <span class="Operator">.</span> rmap <span class="Operator">.</span> flip
+
+outer <span class="Operator">=</span> lmap <span class="Operator">.</span> rmap
+<span class="Comment">--      \f xs ys -&gt; map (\x -&gt; map (f x) ys) xs</span>
+</pre>
+<p>This is like splitting Outer Product into two applications of Rank in APL.</p>
+<pre class='haskell d3'>
+<span class="Prompt">λ&gt;</span> <span class="Delimiter">(</span>flip <span class="Operator">.</span> <span class="Delimiter">(</span>map <span class="Operator">.</span><span class="Delimiter">)</span> <span class="Operator">.</span> flip <span class="Operator">.</span> <span class="Delimiter">(</span>map <span class="Operator">.</span><span class="Delimiter">))</span> compare <span class="Delimiter">[</span><span class="Constant">1</span><span class="Operator">..</span><span class="Constant">3</span><span class="Delimiter">]</span> <span class="Delimiter">[</span><span class="Constant">1</span><span class="Operator">..</span><span class="Constant">4</span><span class="Delimiter">]</span>
+<span class="Delimiter">[[</span><span class="Type">EQ</span><span class="Delimiter">,</span><span class="Type">LT</span><span class="Delimiter">,</span><span class="Type">LT</span><span class="Delimiter">,</span><span class="Type">LT</span><span class="Delimiter">]</span><span class="Delimiter">,</span><span class="Delimiter">[</span><span class="Type">GT</span><span class="Delimiter">,</span><span class="Type">EQ</span><span class="Delimiter">,</span><span class="Type">LT</span><span class="Delimiter">,</span><span class="Type">LT</span><span class="Delimiter">]</span><span class="Delimiter">,</span><span class="Delimiter">[</span><span class="Type">GT</span><span class="Delimiter">,</span><span class="Type">GT</span><span class="Delimiter">,</span><span class="Type">EQ</span><span class="Delimiter">,</span><span class="Type">LT</span><span class="Delimiter">]]</span>
+</pre>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

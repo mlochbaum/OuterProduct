@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>How many elements in an array?</h2>
+<p>The total number of elements in an array is called its "bound".</p>
+<p>When we take an outer product on two arrays, we multiply their bounds to find the bound of the result.</p>
+<p>The bound of an array is the product of its entire shape:</p>
+<pre class="apl">
+      <span class="Type">×</span><span class="PreProc">/</span> <span class="Constant">2</span> <span class="Constant">3</span> <span class="Constant">4</span> <span class="Constant">5</span>
+<span class="Result">120</span>
+      <span class="Type">×</span><span class="PreProc">/</span> <span class="Type">⍴</span> <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">2</span> <span class="Constant">3</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">,</span> <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">4</span> <span class="Constant">5</span><span class="Delimiter">)</span>
+<span class="Result">120</span>
+      <span class="Type">×</span><span class="PreProc">/</span> <span class="Delimiter">(</span><span class="Type">⍴</span> <span class="Type">⍳</span><span class="Constant">2</span> <span class="Constant">3</span><span class="Delimiter">)</span> <span class="Type">,</span> <span class="Delimiter">(</span><span class="Type">⍴</span> <span class="Type">⍳</span><span class="Constant">4</span> <span class="Constant">5</span><span class="Delimiter">)</span>
+<span class="Result">120</span>
+      <span class="Delimiter">(</span><span class="Type">×</span><span class="PreProc">/</span> <span class="Type">⍴</span> <span class="Type">⍳</span><span class="Constant">2</span> <span class="Constant">3</span><span class="Delimiter">)</span> <span class="Type">×</span> <span class="Delimiter">(</span><span class="Type">×</span><span class="PreProc">/</span> <span class="Type">⍴</span> <span class="Type">⍳</span><span class="Constant">4</span> <span class="Constant">5</span><span class="Delimiter">)</span>
+<span class="Result">120</span>
+</pre>
+<script src="keys.js"></script>
+</body>

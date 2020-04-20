@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        html { background:url(bg/8.png); }
+        .apl { font-size: 104px; margin: 0px 35%; text-align:center; }
+        div { position: relative; margin-top: 90px; }
+        svg { position: absolute; }
+        table {
+            width: 80%; margin: 80px auto;
+            font-size: 64px; text-align: center;
+        }
+        td { width: 50%; }
+        p { margin-top: 60px; }
+    </style>
+</head>
+<body>
+<h2>The Rank (<code class="Operator">⍤</code>) operator</h2>
+<p>Rank is a dyadic operator, so it always takes two operands:</p>
+<div>
+<svg height="100%" width="100%">
+    <g stroke="#222" stroke-width=6 stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+        <path d="M 890 130L 800 190H 630L 580 240"></path>
+        <path d="M1020 130L1110 190H1270L1320 240"></path>
+    </g>
+</svg>
+<pre class='apl'>
+<span class="Type">⊂</span><span class="Operator">⍤</span><span class="Constant">2</span>
+</pre>
+<table><tr>
+    <td>A function</td>
+    <td>One to three numbers</td>
+</table><tr>
+</div>
+<p>Much like <code class="PreProc">⍨</code> guarantees that its operand is called with two arguments (dyadically), <code class="Operator">⍤</code> guarantees that its operand is called only on arrays whose rank is less than or equal to the specified rank.</p>
+<p>If an argument array's rank is too large, Rank maps over cells of the array.</p>
+<script src="keys.js"></script>
+</body>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        table { width:100%; margin:-42px 0px; }
+        pre { font-size:40px; }
+    </style>
+</head>
+<body>
+<h2>Exchanging arguments</h2>
+<table><tr>
+<td><pre class="apl">
+      <span class="Constant">10</span> <span class="Constant">20</span> <span class="Constant">30</span> <span class="Operator">∘.</span><span class="Type">-</span> <span class="Constant">1</span> <span class="Constant">2</span> <span class="Constant">4</span> <span class="Constant">8</span>
+<span class="Result"> 9  8  6  2
+19 18 16 12
+29 28 26 22</span>
+
+</pre></td>
+<td style="width:30px"></td>
+<td><pre class="apl">
+      <span class="Constant">1</span> <span class="Constant">2</span> <span class="Constant">4</span> <span class="Constant">8</span> <span class="Operator">∘.</span><span class="Type">-</span> <span class="Constant">10</span> <span class="Constant">20</span> <span class="Constant">30</span>
+<span class="Result">¯9 ¯19 ¯29
+¯8 ¯18 ¯28
+¯6 ¯16 ¯26
+¯2 ¯12 ¯22</span>
+</pre></td>
+</tr></table>
+<p>Swapping sides exchanges the arguments in each function application, and also changes the order in which results are presented.</p>
+<div class="d3">
+<pre class="apl">
+      <span class="Type">⍉</span> <span class="Constant">1</span> <span class="Constant">2</span> <span class="Constant">4</span> <span class="Constant">8</span> <span class="Operator">∘.</span><span class="Delimiter">(</span><span class="Type">-</span><span class="PreProc">⍨</span><span class="Delimiter">)</span> <span class="Constant">10</span> <span class="Constant">20</span> <span class="Constant">30</span>
+<span class="Result"> 9  8  6  2
+19 18 16 12
+29 28 26 22</span>
+</pre>
+<p>The Swap (<code class="PreProc">⍨</code>) operator and Transpose (<code class="Type">⍉</code>) function undo this.<br/>
+For any function <code class="Normal">f</code>, the outer product <code><span class="Normal">x</span> <span class="Operator">∘.</span><span class="Normal">f</span> <span class="Normal">y</span></code> is equivalent to <code><span class="Type">⍉</span> <span class="Normal">y</span> <span class="Operator">∘.</span><span class="Delimiter">(</span><span class="Normal">f</span><span class="PreProc">⍨</span><span class="Delimiter">)</span> <span class="Normal">x</span></code>.</p>
+</div>
+<script src="d3/d3.v5.min.js"></script>
+<script>
+document.onclick = function() {
+    d3.select(".d3").transition().duration(400).style("opacity",1);
+}
+</script>
+<script src="keys.js"></script>
+</body>

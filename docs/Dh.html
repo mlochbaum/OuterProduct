@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>Scalar extension</h2>
+<p>For a scalar function such as Power (<code class="Type">*</code>) there are three obvious ways it can apply to an array argument:</p>
+<pre class="apl">
+      <span class="Constant">2</span> <span class="Type">*</span> <span class="Type">⍳</span><span class="Constant">6</span>     <span class="Comment">⍝ Some powers of 2</span>
+<span class="Result">1 2 4 8 16 32</span>
+
+      <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">6</span><span class="Delimiter">)</span> <span class="Type">*</span> <span class="Constant">2</span>   <span class="Comment">⍝ Some squares</span>
+<span class="Result">0 1 4 9 16 25</span>
+
+      <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">6</span><span class="Delimiter">)</span> <span class="Type">*</span> <span class="Type">⍳</span><span class="Constant">6</span>  <span class="Comment">⍝ Some self-exponents</span>
+<span class="Result">1 1 4 27 256 3125</span>
+</pre>
+<p>If there's a scalar argument, it <em>has</em> to be used in every function invocation, since there's nowhere else to take arguments from. Rank applies the same principle to arguments with only one cell.</p>
+<script src="keys.js"></script>
+</body>

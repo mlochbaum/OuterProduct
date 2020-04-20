@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .apl.d3 { margin:0px; }
+    </style>
+</head>
+<body>
+<h2>The Cantor set without</h2>
+<p>Let's start working with numbers instead of text. Since we're replacing every one, we'll use a real looping construct:</p>
+<pre class="apl">
+      <span class="Type">,</span> <span class="Delimiter">(</span><span class="Special">{⍵</span><span class="Type">,</span><span class="Constant">0</span><span class="Type">,</span><span class="Special">⍵}</span><span class="Operator">⍤</span><span class="Constant">0</span><span class="Delimiter">)</span> <span class="Constant">1</span> <span class="Constant">0</span> <span class="Constant">1</span>
+<span class="Result">1 0 1 0 0 0 1 0 1</span>
+</pre>
+<p class="d3">In APL we usually prefer simple arithmetic over array manipulation:</p>
+<pre class="apl d3">
+      <span class="Type">,</span> <span class="Delimiter">(</span><span class="Special">{⍵</span><span class="Type">×</span><span class="Constant">1</span> <span class="Constant">0</span> <span class="Constant">1</span><span class="Special">}</span><span class="Operator">⍤</span><span class="Constant">0</span><span class="Delimiter">)</span> <span class="Constant">1</span> <span class="Constant">0</span> <span class="Constant">1</span>
+<span class="Result">1 0 1 0 0 0 1 0 1</span>
+</pre>
+<pre class="apl d3">
+      <span class="Type">,</span><span class="Operator">∘</span><span class="Delimiter">(</span><span class="Special">{⍵</span><span class="Type">×</span><span class="Constant">1</span> <span class="Constant">0</span> <span class="Constant">1</span><span class="Special">}</span><span class="Operator">⍤</span><span class="Constant">0</span><span class="Delimiter">)</span><span class="Operator">⍣</span><span class="Constant">3</span><span class="Type">⊢</span> <span class="Constant">1</span>
+<span class="Result">1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 1 0 1</span>
+</pre>
+<p class="d3">Well, it's shorter than regex…</p>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

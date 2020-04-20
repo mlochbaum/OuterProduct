@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        pre { margin-top: 34px; margin-bottom:56px; }
+        p { margin-bottom: 0px; }
+    </style>
+</head>
+<body>
+<h2>Arrays are like static typing for lists</h2>
+<p>An array of rank greater than one can be viewed as a list of arrays, all of which have the <strong>same shape</strong>. Array shape can be considered a form of typing.</p>
+<pre class="haskell">
+<span class="Type">Array</span> l<span class="Operator">:</span>sh  <span style="letter-spacing:-4px">←→</span>  <span class="Delimiter">(</span> <span class="Type">Array</span> sh<span class="Delimiter">,</span> <span class="Type">Array</span> sh<span class="Delimiter">,</span> <span class="Operator">...</span> <span class="Type">Array</span> sh <span class="Delimiter">)</span>  <span class="Comment">-- Length l</span>
+</pre>
+<div class="d3">
+<p>In some array languages (such as Sharp APL and J), the elements of an array must all have the <strong>same type</strong>: numeric, literal, or boxed (a box can contain anything). Even implementations of languages without this requirement implicitly store arrays this way.</p>
+<pre class="haskell">
+<span class="Type">Array</span> [l] t  <span style="letter-spacing:-4px">←→</span>  <span class="Delimiter">(</span> t<span class="Delimiter">,</span> t<span class="Delimiter">,</span> <span class="Operator">...</span> t <span class="Delimiter">)</span>                      <span class="Comment">-- Length l</span>
+</pre>
+</div>
+<p class="d3">This has real consequences: even an array which has no major cells knows what their shape should be!</p>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

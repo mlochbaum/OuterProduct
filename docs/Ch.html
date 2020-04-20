@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>Identity element for <code><span class="Operator">∘.</span><span class="Type">,</span></code> ?</h2>
+The identity element of <code class="Type">,</code> is the empty list <code class="Constant">⍬</code> :
+<pre class="apl">
+      <span class="Constant">⍬</span><span class="Type">,</span><span class="Constant">3</span> <span class="Constant">2</span> <span class="Constant">1</span><span class="Type">,</span><span class="Constant">⍬</span>
+<span class="Result">3 2 1</span>
+</pre>
+But that's not the identity element of <code><span class="Operator">∘.</span><span class="Type">,</span></code> :
+<pre class="apl">
+      <span class="Constant">⍬</span> <span class="Operator">∘.</span><span class="Type">,</span> <span class="Constant">3</span> <span class="Constant">2</span> <span class="Constant">1</span>  <span class="Comment">⍝ APL keeps not printing anything!</span>
+</pre>
+The identity element of an outer product needs to be an array whose shape is the empty list!
+<pre class="apl">
+      <span class="Type">⍴</span><span class="Constant">⍬</span>
+<span class="Constant">0</span>
+</pre>
+<script src="keys.js"></script>
+</body>

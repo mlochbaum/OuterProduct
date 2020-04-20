@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<p style="width:1400px; margin: 100px auto; font-size:64px; text-align:center">APL draws a hard syntactic distinction between functions and arguments such as numbers.</p>
+<ul class="d3">
+    <li>A name can be assigned to a function or an argument value, but this cannot be changed without erasing it.</li>
+    <li>APL's grammar is not context free, because the way a name is parsed depends on its value.</li>
+    <li>If a sequence of functions and arguments end in an argument, it can always be parsed as a sequence of prefix and infix applications—there's no room to use functions as arguments!</li>
+</ul>
+<script src="d3/d3.v5.min.js"></script>
+<script>
+document.onclick = function() {
+    d3.select(".d3").transition().duration(500).style("opacity",1);
+}
+</script>
+<script src="keys.js"></script>
+</body>

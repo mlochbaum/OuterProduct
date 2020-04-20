@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .apl { background-color: transparent; padding: 18px 22px; }
+        .wrap { position: relative; }
+        svg { position: absolute; background-color: #f7efed; z-index:-1; }
+    </style>
+</head>
+<body>
+<h2>Sierpinski's triangle</h2>
+<div class="wrap">
+<svg height="100%" width="100%"></svg>
+<pre class="apl" style="font-size:40px; line-height:48px background-image:url(#background)">
+      <span class="Constant">2</span> <span class="Type">|</span> <span class="Operator">∘.</span><span class="Type">!</span><span class="PreProc">⍨</span> <span class="Type">⍳</span><span class="Constant">16</span>
+<span class="Result">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1
+0 0 0 0 1 1 1 1 0 0 0 0 1 1 1 1
+0 0 0 0 0 1 0 1 0 0 0 0 0 1 0 1
+0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 1
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1
+0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1
+0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1
+0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1
+0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1</span>
+</pre>
+</div>
+<script src="d3/d3.v5.min.js"></script>
+<script src="Bf.js"></script>
+<script src="keys.js"></script>
+</body>

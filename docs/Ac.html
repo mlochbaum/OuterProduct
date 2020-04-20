@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .apl { font-size: 68px; margin: 0px; }
+        div { position: relative; }
+        svg { position: absolute; }
+    </style>
+</head>
+<body>
+<h2>Order of operations</h2>
+<p>APL has no precedence ordering among functions. It evaluates from right to left.</p>
+<div>
+<svg height="780" width="100%"></svg>
+<pre class='apl'>
+      <span class="Constant">4</span>  <span class="Type">+</span>  <span class="Constant">3</span>  <span class="Type">÷</span>  <span class="Type">-</span>  <span class="Constant">2</span>  <span class="Type">×</span>  <span class="Constant">2</span>
+<span class="Result">3.25</span>
+</pre>
+</div>
+<script src="d3/d3.v5.min.js"></script>
+<script src="d3/d3-selection-multi.v1.min.js"></script>
+<script src="Ac.js"></script>
+<script src="keys.js"></script>
+</body>

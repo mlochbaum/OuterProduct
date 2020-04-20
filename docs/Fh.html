@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .d3 { display:none; }
+        .apl { margin:0px; }
+    </style>
+</head>
+<body>
+<h2>Counting</h2>
+<div class="overwrite">
+<p>List the natural numbers less than 1000.</p>
+<pre class="apl">
+      <span class="Type">⍳</span><span class="Constant">1000</span>
+<span class="Result">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24…</span>
+</pre>
+</div>
+<p class="d3">List in an interesting way the natural numbers less than 1000.</p>
+<pre class="apl d3">
+      <span class="Delimiter">(</span><span class="Constant">10</span> <span class="Type">*</span> <span class="Type">⍳</span><span class="Constant">3</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">×</span> <span class="Type">⍳</span><span class="Constant">10</span>
+<span class="Result">0   1   2   3   4   5   6   7   8   9
+0  10  20  30  40  50  60  70  80  90
+0 100 200 300 400 500 600 700 800 900</span>
+</pre>
+<pre class="apl d3">
+      <span class="Type">⊖</span> <span class="Type">↓</span> <span class="Delimiter">(</span><span class="Constant">10</span> <span class="Type">*</span> <span class="Type">⍳</span><span class="Constant">3</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">×</span> <span class="Type">⍳</span><span class="Constant">10</span>
+<span class="Result">┌─────────────────────────────────────┬───────────────────────⋯
+│0 100 200 300 400 500 600 700 800 900│0 10 20 30 40 50 60 70 ⋯
+└─────────────────────────────────────┴───────────────────────⋯</span>
+</pre>
+<div class="d3">
+<p>A three-digit number is just a choice of one digit within each place value.</p>
+<pre class="apl">
+      <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">1000</span><span class="Delimiter">)</span>  <span class="Type">≡</span>  <span class="Type">,</span> <span class="Type">⊃</span> <span class="Operator">∘.</span><span class="Type">+</span><span class="PreProc">/</span> <span class="Type">⊖</span> <span class="Type">↓</span> <span class="Delimiter">(</span><span class="Constant">10</span> <span class="Type">*</span> <span class="Type">⍳</span><span class="Constant">3</span><span class="Delimiter">)</span> <span class="Operator">∘.</span><span class="Type">×</span> <span class="Type">⍳</span><span class="Constant">10</span>
+<span class="Result">1</span>
+</pre>
+</div>
+<script src="d3/d3.v5.min.js"></script>
+<script>
+var li = 0;
+document.onclick = function() {
+    if (!li) {
+        d3.select(".overwrite").style("display","none");
+        d3.selectAll(".d3").style("display","inherit");
+    }
+    d3.selectAll(".d3").filter((_,i)=>i===li)
+        .transition().duration(li?300:0)
+        .style("opacity",1);
+    li++;
+}
+</script>
+<script src="keys.js"></script>
+</body>

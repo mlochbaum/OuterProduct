@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .apl.d3 { margin:0px; }
+    </style>
+</head>
+<body>
+<h2>Maximum distance among 3-D points</h2>
+<pre class='apl'>
+      <span class="Type">⊢</span><span class="Normal">A</span> <span class="Statement">←</span> <span class="Type">?</span><span class="Constant">6</span> <span class="Constant">3</span><span class="Type">⍴</span><span class="Constant">0</span>
+<span class="Result">0.3349932788  0.7397139049  0.24485046
+0.40858244    0.06364036903 0.9221502212
+0.09579008111 0.5432285983  0.5325855879
+0.1817576792  0.8612152057  0.7752292961
+0.4695255775  0.9138674043  0.6445105891
+0.7025187821  0.2501759014  0.7485675001</span>
+</pre><pre class="apl d3">
+      <span class="Normal">len</span> <span class="Statement">←</span> <span class="Special">{</span><span class="Constant">0.5</span> <span class="Type">*</span><span class="PreProc">⍨</span> <span class="Type">+</span><span class="PreProc">⌿</span> <span class="Special">⍵</span><span class="Type">*</span><span class="Constant">2</span><span class="Special">}</span>
+</pre><pre class="apl d3">
+      <span class="Type">⌈</span><span class="PreProc">/</span><span class="Type">,</span> <span class="Special">{</span><span class="Normal">len</span> <span class="Special">⍺</span><span class="Type">-</span><span class="Special">⍵}</span><span class="Operator">⍤</span><span class="Constant">99</span> <span class="Constant">1</span><span class="Operator">⍤</span><span class="Constant">1</span> <span class="Constant">99</span><span class="PreProc">⍨</span> <span class="Normal">A</span>
+<span class="Result">0.9598050621</span>
+</pre><pre class="apl d3">
+      <span class="Type">⌈</span><span class="PreProc">/</span><span class="Type">,</span> <span class="Normal">len</span> <span class="Type">-</span><span class="Operator">⍤</span><span class="Constant">1</span> <span class="Constant">0</span><span class="Operator">⍤</span><span class="Constant">0</span> <span class="Constant">1</span><span class="Operator">⍤</span><span class="Constant">1</span><span class="PreProc">⍨</span> <span class="Type">⍉</span><span class="Normal">A</span>
+<span class="Result">0.9598050621</span>
+</pre>
+<script src="d3/d3.v5.min.js"></script>
+<script src="fadein.js"></script>
+<script src="keys.js"></script>
+</body>

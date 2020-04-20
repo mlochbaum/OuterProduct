@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h2>Dyadic functions with Rank</h2>
+<p>Using Catenate (<code class="Type">,</code>) we can see that depending on the argument shapes Rank might copy one argument, or not.</p>
+<pre class="apl">
+      <span class="String">'&quot;'</span> <span class="Delimiter">(</span><span class="Type">,</span><span class="Operator">⍤</span><span class="Constant">1</span><span class="Delimiter">)</span> <span class="Delimiter">(</span><span class="Constant">4</span> <span class="Constant">5</span><span class="Type">⍴</span><span class="Constant">⎕A</span><span class="Delimiter">)</span> <span class="Delimiter">(</span><span class="Type">,</span><span class="Operator">⍤</span><span class="Constant">1</span><span class="Delimiter">)</span> <span class="String">'&quot;,'</span>
+<span class="Result">"ABCDE",
+"FGHIJ",
+"KLMNO",
+"PQRST",</span>
+
+      <span class="Normal">fmt</span> <span class="Statement">←</span> <span class="Special">{</span><span class="Delimiter">(</span><span class="Type">⍕</span><span class="Special">⍺</span><span class="Delimiter">)</span><span class="Type">,</span><span class="String">': '</span><span class="Type">,</span><span class="Special">⍵}</span>  <span class="Comment">⍝ Print ⍺ and join with ': ' to ⍵</span>
+      <span class="Delimiter">(</span><span class="Type">⍳</span><span class="Constant">4</span><span class="Delimiter">)</span> <span class="Delimiter">(</span><span class="Normal">fmt</span><span class="Operator">⍤</span><span class="Constant">0</span> <span class="Constant">1</span><span class="Delimiter">)</span> <span class="Constant">4</span> <span class="Constant">5</span><span class="Type">⍴</span><span class="Constant">⎕A</span>
+<span class="Result">0: ABCDE
+1: FGHIJ
+2: KLMNO
+3: PQRST</span>
+</pre>
+<script src="keys.js"></script>
+</body>
