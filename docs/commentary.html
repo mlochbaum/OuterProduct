@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        body { font-size: 30px; }
+        p { margin: 20px 90px; }
+        h2 { margin:140px 90px -20px; text-align:left; }
+        li { line-height: 1.34; margin: 20px; }
+        iframe {
+            height: 1080px;
+            width: 1920px;
+            margin: -38px -20px -108px;
+            transform: scale(0.8);
+            background-position: bottom right;
+            background-repeat: no-repeat;
+        }
+        iframe.click {
+            background-image: url("left_ptr.png");
+        }
+        code { white-space: nowrap; }
+        li ul { padding-left: 14px; }
+    </style>
+</head>
+
+<body>
+<iframe src="NTT.html"></iframe>
+<p>My <a href="https://www.youtube.com/watch?v=WlUHw4hC4OY">actual talk</a> goes into more detail about the philosophy as we begin. In <a href="https://en.wikipedia.org/wiki/Kenneth_E._Iverson">Ken Iverson</a>'s Turing Award lecture <em><a href="https://www.jsoftware.com/papers/tot.htm">Notation as a Tool of Thought</a></em>, valuable insight comes front and center.</p>
+
+<h2>APL: The Basics</h2>
+<iframe src="Aa.html"></iframe>
+<p>This section primarily covers the basics of <a href="https://aplwiki.com/wiki/APL_syntax">APL syntax</a>, and introduces some functions we'll use later.</p>
+
+<iframe class="click" src="Ab.html"></iframe>
+<p>For a much more technical look, see <a href="https://aplwiki.com/wiki/Function#Function_valence">function valence</a>. Note the distinction between a function application and a function. A given function (like <code>-</code>) may be applied as a monad or dyad; it doesn't have to be one or the other.</p>
+<p>The last example illustrates the <a href="https://aplwiki.com/wiki/Assignment">assignment</a> token <code>←</code>, and that functions can be given names.</p>
+<p>We'll use the function <a href="https://aplwiki.com/index.php?title=Combinations">Combinations</a> (<code>!</code>) later so it'll be helpful to understand it.</p>
+
+<iframe class="click" src="Ac.html"></iframe>
+<p>Like most languages, APL has parentheses for when you want a different ordering.</p>
+<p>There are two ways to think about APL's <a href="https://aplwiki.com/index.php?title=Evaluation_order">order of operations</a>: APL is evaluated from right to left (imperative), or each function applies to the value immediately to the left, if any, and everything to the right up to an enclosing parenthesis or the end of the statement (functional).</p>
+
+<iframe class="click" src="Ad.html"></iframe>
+<p>APL is not a functional language: functions are second-class rather than first class values.</p>
+<p>APL's syntax makes functional patterns harder and array-oriented patterns easier. In fact syntactic choices like the function-value distinction probably play a large role in shaping how programming paradigms like array orientation develop.</p>
+
+<iframe class="click" src="Ae.html"></iframe>
+<p>In APL, the ordinary numbers 0 and 1 are used for <a href="https://aplwiki.com/wiki/Boolean">booleans</a>.</p>
+<p>Numbers usually aren't stored as pairs of doubles. Dyalog APL is very good at keeping data in small <a href="https://aplwiki.com/wiki/Dyalog_APL#Internal_types">internal types</a>, and this is a huge performance advantage relative to languages like C which always use the declared type.</p>
+
+<iframe class="click" src="Af.html"></iframe>
+<p>The convention of forming lists automatically from adjacent arguments is called <a href="https://aplwiki.com/wiki/Strand_notation">"stranding"</a>.</p>
+<p>The second statement shows a <a href="https://aplwiki.com/wiki/Nested_array">nested</a> list formed by using the rule with lists as the arguments.</p>
+<p><code>]box on</code> should be set by default in the <a href="https://github.com/mlochbaum/OuterProduct">provided scripts</a>.</p>
+<p>There's no dedicated string type in APL; it uses lists of characters.</p>
+
+<iframe src="Ag.html"></iframe>
+<p>Here we see that <a href="https://aplwiki.com/wiki/Equal_to">Equal to</a> (<code>=</code>) is an arithmetic operation, returning 0 or 1, rather than assignment. It <a href="https://aplwiki.com/wiki/Pervasion">maps over</a> lists in exactly the same way as other arithmetic does.</p>
+
+<iframe src="Ah.html"></iframe>
+<p><code>⎕IO</code> is the <a href="https://aplwiki.com/wiki/Index_origin">"index origin"</a>, that is, the index used for the leading element of a list. It's set to 1 by default in Dyalog but I need it to be 0 in various places. Like the boxed display, it's set up already in the provided docker resources.</p>
+
+<iframe src="Ai.html"></iframe>
+<p>For an <a href="https://aplwiki.com/wiki/Operator">operator</a> such as <a href="https://aplwiki.com/index.php?title=Commute">Commute</a> (<code>⍨</code>), regular arguments are allowed as <a href="https://aplwiki.com/wiki/Operand">operands</a> as well as functions.</p>
+
+<iframe src="Aj.html"></iframe>
+<p>The term <a href="https://aplwiki.com/index.php?title=Reduce">"reduction"</a> comes from APL: the operator was around at least as early as 1962.</p>
+<p>The function <code>⌊</code> takes the <a href="https://aplwiki.com/wiki/Minimum">minimum</a> of its two arguments. The paired floor/ceiling symbols in mathematics are also from APL, which has since dropped the pairing.</p>
+<p><a href="https://aplwiki.com/index.php?title=Compose">Compose</a> (<code>∘</code>) in most cases does whatever writing the operands and arguments with no operator in the middle would do. In Dyalog 18.0 and later it's usually better to use <a href="https://aplwiki.com/index.php?title=Atop">Atop</a> (<code>⍤</code>), which applies the right operand to all arguments and the left operand to its result.</p>
+
+<iframe class="click" src="Ak.html"></iframe>
+<p>A lot shorter than most languages. APL does have a fair amount of irregular syntax though (Outer Product is one example).</p>
+<p>The fact that operators and functions go in opposite directions sounds pretty dissonant, but works fine in practice. It was a deliberate choice, not an accident.</p>
+
+<iframe src="Aq.html"></iframe>
+<p>Hopefully by now you feel that reading APL is possible, even if you have to make your way through expressions slowly at first.</p>
+
+
+<h2>The Outer Product Operator</h2>
+<iframe src="Ba.html"></iframe>
+<p><a href="https://aplwiki.com/index.php?title=Outer_Product">Outer Product</a> was initially considered a special case of matrix product, which is an unfortunate origin for such a fundamental primitive. The syntax is not like most operators for this reason: it's derived from the ordinary dyadic operator <a href="https://aplwiki.com/index.php?title=Inner_Product">Inner Product</a> (<code>.</code>). I won't discuss Inner Product here.</p>
+
+<iframe src="Bb.html"></iframe>
+<p>This statement uses <a href="https://aplwiki.com/index.php?title=Commute">Commute</a> (<code>⍨</code>) from the previous section to place the same argument on both sides of the outer product (<code>∘.</code> with operand <code>+</code>).</p>
+<p>That argument is generated with <a href="https://aplwiki.com/wiki/Index_Generator">iota</a> (<code>⍳</code>; officially, "Index Generator") which here returns the first 12 indices. Since we've specified that indices start at zero we add one to get the numbers used in a traditional multiplication table.</p>
+<p>This is a complicated expression. Take your time!</p>
+
+<iframe src="Bc.html"></iframe>
+<p>APL has no "true" and "false" so <code>=</code> returns 1 or 0. This has some significant advantages, like the ease of expressing the computation above.</p>
+
+<iframe class="click" src="Bd.html"></iframe>
+<p>The expression <code>{⍺,' ',⍵}</code> is called a <a href="https://aplwiki.com/wiki/Dfn">"dfn"</a> (DEE-fun with hardly any u). It's a way of writing lexically scoped anonymous functions. The left argument, if any, is always named <code>⍺</code> and the right argument is always named <code>⍵</code>, pronounced as the Greek letters alpha and omega.</p>
+<p><a href="https://aplwiki.com/index.php?title=Catenate">Catenate</a> <code>,</code> combines two lists, such as the string arguments given here. It also handles single elements like the space character.</p>
+<p>So each element of the result is a string or list of characters.</p>
+<p>The second expression is just to show that APL can do more complicated things fairly easily when required; maybe it's something to come back to when you have more experience. Do note however the parallel between the outer product used for names and the other (<code>∘.+</code>) for numbers.</p>
+
+<iframe src="Be.html"></iframe>
+<p>Recall that <code>!</code> is the <a href="https://aplwiki.com/index.php?title=Combinations">combination counting</a> function from mathematics.</p>
+
+<iframe class="click" src="Bf.html"></iframe>
+<p><a href="https://aplwiki.com/index.php?title=Residue">Residue</a> (<code>|</code>) computes a modular division, like <code>%</code> in some other languages but with the arguments reversed.</p>
+
+<iframe class="click" src="Bg.html"></iframe>
+<p><a href="https://aplwiki.com/index.php?title=Transpose">Transpose</a> exchanges horizontal and vertical <a href="https://aplwiki.com/wiki/Axis">axes</a> like in matrix arithmetic.</p>
+
+<iframe src="Bh.html"></iframe>
+<p>Using Outer Product with comparisons like <a href="https://aplwiki.com/wiki/Less_than">Less-Than</a> (<code>&lt;</code>) is a nice way to generate triangular matrices.</p>
+<p>The first dfn places its argument alongside that argument's transpose using stranding.</p>
+<p>Since <code>=</code> compares arguments one value at a time, another function <a href="https://aplwiki.com/wiki/Match">Match</a> (<code>≡</code>) is provided to test whether they are identical as a whole.</p>
+
+<iframe src="Bi.html"></iframe>
+<p>The result is really a 3-dimensional cube; to display it on the screen it's split into 2D slices.</p>
+
+<iframe src="Bj.html"></iframe>
+<p>Here two outer products with string catenation are combined. Catenation is associative because it doesn't matter which order you use to join things together; the elements all end up in order in a list.</p>
+<p>Similarly, it doesn't matter in which order we outer-product-catenate. It's equivalent to say that each book has three chapters and each of these chapters has five paragraphs; or that each chapter is composed of five paragraphs and each book is composed of three of these chapters.</p>
+
+<iframe src="Bq.html"></iframe>
+<p>By now you should know what Outer Product does. But maybe not what it <em>is</em>.</p>
+
+
+<h2>Arrays</h2>
+<iframe src="Ca.html"></iframe>
+<p>Now we are getting somewhere.</p>
+
+<iframe src="Cb.html"></iframe>
+<p>An <a href="https://aplwiki.com/wiki/Array_model">array</a> is something that is shaped like an outer product!</p>
+<p>Combining <a href="https://aplwiki.com/wiki/Index">indices</a> for lists of length 2, 3, and 4 gives us indices for a 2×3×4 array.</p>
+<p>The <a href="https://aplwiki.com/wiki/Index_Generator">Index Generator</a> can actually do this for us if passed a list of lengths instead of a single length. This list is called…</p>
+
+<iframe src="Cc.html"></iframe>
+<p>…the array's <a href="https://aplwiki.com/wiki/Shape">shape</a>, and its length is the <a href="https://aplwiki.com/wiki/Rank">rank</a>.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Monoid">monoid</a> is a set with an operation on that set that is associative, and has an identity element (like a group without inverses).</p>
+<p>I skipped over the <a href="https://aplwiki.com/wiki/Identity_element">identity element</a> here in order to discuss it later.</p>
+
+<iframe src="Cd.html"></iframe>
+<p>Don't worry too much about understanding <a href="https://aplwiki.com/index.php?title=Split">Split</a>.</p>
+<p>Many languages don't really have multidimensional arrays; they simply simulate them with nested lists. The difference is highlighted here: in one of these languages, these three values would all be considered the same.</p>
+<p>It's hard to make everything fit on a slide sometimes…</p>
+<p><a href="https://aplwiki.com/wiki/Simple_array">Flat</a> (non-nested) arrays are also different from nested lists in that each dimension has to have a uniform length. So nested lists can express things that flat arrays can't (but nested arrays can).</p>
+
+<iframe src="Ce.html"></iframe>
+<p>The <a href="https://aplwiki.com/wiki/Identity">identity function</a> <code>⊢</code> is used here to print the value of d.</p>
+<p>The <a href="https://aplwiki.com/wiki/Leading_axis_theory">leading axis</a> viewpoint brings some benefits of working with nested lists to the array model. It may seem obvious for someone used to nested lists but the idea that it's useful to prioritise some dimensions of an array was a big shift in APL thinking.</p>
+<p>The choice of the leading axis rather than the trailing axis is superior because it means that each <a href="https://aplwiki.com/wiki/Cell">cell</a> is contiguous, both on the screen and in memory. The <a href="https://aplwiki.com/wiki/Axis#Axis_ordering">choice</a> to write that axis at list index 0 (and to write index 0 at the left) is independent and arbitrary.</p>
+
+<iframe class="click" src="Cf.html"></iframe>
+<p>This is the essence of arrays in my opinion.</p>
+<p>Also in my opinion, the most concrete difference between static and dynamic typing is that with static typing you know something about your values even if there aren't any of them (or they aren't computed yet).</p>
+
+<iframe class="click" src="Cg.html"></iframe>
+<p>We get one empty line at the top because there are two cells with no lines in them: the space is the one separating these cells. After one reduction there's just one cell with no lines.</p>
+<p>This makes APL's transpose a true self-inverse. In other languages transpose can lose information.</p>
+<p>A big part of the reason why <code>+/</code> or sum is called a <em>reduction</em> is that it reduces the rank of its argument by one.</p>
+<p><a href="https://aplwiki.com/wiki/Zilde">Zilde</a> (<code>⍬</code>) is the empty list, and is different from the empty string (<code>''</code>). This is because APL stores in each empty array a <a href="https://aplwiki.com/wiki/Prototype">"prototype"</a> indicating what shape, nested structure, and type(s) the elements would have if there were any. Unlike zeros in the shape, the prototype isn't a clean theoretical concept and doesn't make sense with all array operations.</p>
+
+<iframe src="Ch.html"></iframe>
+<p>The last code block shows that the shape of the <a href="https://aplwiki.com/wiki/Empty_array">empty</a> list is a <a href="https://aplwiki.com/wiki/Singleton">one-element</a> list, not an empty list.</p>
+
+<iframe src="Ci.html"></iframe>
+<p>The expressions shown indicate that to find the <a href="https://aplwiki.com/wiki/Bound">bound</a> of an outer product, we can take the product of the shape of the outer product, or the product of the combined argument shapes, or the product of the two arguments bounds.</p>
+<p>Bound is a composition of two monoid transformations (<a href="https://en.wikipedia.org/wiki/Monoid_homomorphism">homomorphisms</a>): <code>⍴</code> goes from arrays to shapes, and <code>×/</code> goes from shapes to bounds.</p>
+
+<iframe class="click" src="Cj.html"></iframe>
+<p>I now introduce the term <a href="https://aplwiki.com/wiki/Scalar">"scalar"</a> which I have been awkwardly stepping around before.</p>
+<p>APL implementations universally recognise simple reductions like <code>+/</code> and <code>×/</code> on empty arrays in order to return the <a href="https://aplwiki.com/wiki/Identity_element">identity element</a>; some can have pretty extensive code to find identities for other functions.</p>
+
+<iframe src="Ck.html"></iframe>
+<p>Note that it's only the identity element when the arguments are restricted to be arrays of lists. For an array of scalars, there is no identity element since the result will contain arrays with rank at least 1.</p>
+
+<iframe src="Cl.html"></iframe>
+<p>A table of monoids, and one not-quite-monoid: the lengths resulting from <a href="https://aplwiki.com/wiki/Tally">Tally</a> (<code>≢</code>), which form a <a href="https://en.wikipedia.org/wiki/Semigroup">semigroup</a>.</p>
+<p>The columns show the name, the function to get it from an array (recall <code>⊢</code> is the <a href="https://aplwiki.com/wiki/Identity">identity function</a>), the monoid operation, the identity element, and an example.</p>
+<p>Tally doesn't fit: the operation <code>⊣</code> simply returns the left argument, so every element is a right identity but no element is a left identity. The problem is that tally is required to always be a number, and scalars are given a tally of one even though they have no axes to count along. If it instead used a maybe-number, with scalars given a tally of nothing and other arrays just a number, then it would be a monoid.</p>
+
+<iframe src="Cm.html"></iframe>
+<p>Finally we can put it all into place.</p>
+<p>Array thinking is so deeply embedded in APL that I had to introduce a new term "argument" to talk about the things functions are called on without having to first define "array".</p>
+
+<iframe src="Cq.html"></iframe>
+<p>I hope you've got some questions. I hope you're questioning <em>everything</em>.</p>
+
+<iframe src="INT.html"></iframe>
+
+
+<h2>The Rank Operator</h2>
+<iframe src="Da.html"></iframe>
+<p>And its name is the <a href="https://aplwiki.com/index.php?title=Rank_operator">Rank operator</a>, in case you missed it.</p>
+
+<iframe src="Db.html"></iframe>
+<p><code>⌽</code> <a href="https://aplwiki.com/wiki/Reverse">reverses</a> along the last axis, and <code>⊖</code> reverses along the first axis (the leading one!). The symbols are nicely intuitive for matrices: hold onto the bar, and flip 180° around it.</p>
+<p>Dyadic <code>⍴</code> in the first block is <a href="https://aplwiki.com/wiki/Reshape">Reshape</a>, which creates an array with the shape given on the left and elements taken from the right argument.</p>
+
+<iframe src="Dc.html"></iframe>
+<p>Now Rank tells the operand function to work individually on the two rank-2 <a href="https://aplwiki.com/wiki/Cell">cells</a> of the array.</p>
+<p>For <code>⌽</code> this has no effect but for <code>⊖</code> it provides another bit of useful functionality.</p>
+
+<iframe src="Dd.html"></iframe>
+<p>The combination of Rank and a leading-axis reverse make the trailing-axis reverse redundant. The same pattern holds for many of the old-school paired APL functions and operators.</p>
+
+<iframe src="De.html"></iframe>
+<p>The two reductions <code>/</code> and <code>⌿</code> form another pair. However, <code>⌿</code> isn't a true leading-axis primitive: rather than apply the function to the major cells of its argument, it applies it to individual elements within those major cells—essentially, along columns. For <code>+/</code> there's no difference since <code>+</code> is a scalar function, but for functions that operate on whole arrays it's very different.</p>
+<p>The array language <a href="https://aplwiki.com/wiki/J">J</a> was designed in accordance with the leading axis theory, and fixes many problems like this (its version of reduction is called <a href="https://aplwiki.com/wiki/Insert">Insert</a>). Dyalog has taken many primitives from J by now; Rank is one of them.</p>
+<p>I stated in the talk that <a href="https://aplwiki.com/wiki/Take">Take</a> (<code>↑</code>) and <a href="https://aplwiki.com/wiki/Drop">Drop</a> (<code>↓</code>) were a lucky design, working with leading axis theory even though they predate it. Later I learned that this is not the case: originally, a length had to be specified for every axis (or an <a href="https://aplwiki.com/wiki/Function_axis">axis specified)</a>. They were extended by SHARP APL to allow fewer lengths than axes after the development of leading axis theory (see Take's <a href="https://aplwiki.com/wiki/Take#History">history</a>).</p>
+
+<iframe class="click" src="Df.html"></iframe>
+<p>The left argument <code>'rank'</code> here is used three times, while each cell on the right is only used once.</p>
+
+<iframe src="Dg.html"></iframe>
+<p>Some useful formatting code! <a href="https://aplwiki.com/wiki/Format">Format</a> (<code>⍕</code>) converts arrays to strings like the ones shown by the session.</p>
+<p>The second statement shows a function with two ranks, one on the left and one on the right.</p>
+
+<iframe src="Dh.html"></iframe>
+<p><a href="https://aplwiki.com/wiki/Scalar_function">Scalar functions</a> work like they are called with rank 0 all the time (in Dyalog, they additionally enjoy <a href="https://aplwiki.com/wiki/Pervasion">pervasion</a> but suffer from <a href="https://aplwiki.com/wiki/Singleton_extension">singleton extension</a>).</p>
+<p><code>0*0</code> has to be <code>1</code> for polynomial evaluation to work right.</p>
+
+<iframe src="Di.html"></iframe>
+<p>For a non-scalar function <code>f</code>, this would be written <code>f⍤0⍤0 1</code> or <code>f⍤1 0⍤0 1</code>.</p>
+
+<iframe src="Dj.html"></iframe>
+<p>Because Dyalog has a <a href="https://aplwiki.com/index.php?title=Maximum_rank">maximum rank</a> of 15, 99 is used here to denote "infinity".</p>
+
+<iframe class="click" src="Dk.html"></iframe>
+<p>This example shows how Rank can be adapted to work easily with either row vectors or column vectors. In most cases row vectors are more intuitive but column vectors provide better performance because the three cells are large and the operations performed on them are easily vectorised.</p>
+<p>With all these nested ranks the above code makes for a tough conceptual challenge, but if you're willing to work through it you may find you have a much deeper understanding of arrays!</p>
+
+<iframe src="Dq.html"></iframe>
+
+
+<h2>A Modern Functional Approach</h2>
+<iframe src="Ea.html"></iframe>
+<p>The code in this section is real Haskell, and not the pseudo-Haskell I showed earlier.</p>
+
+<iframe class="click" src="Eb.html"></iframe>
+<p>A straightforward definition with <code>map</code>. Note that this version is is tied to lists, and not arrays. You can't use it multiple times to construct a high-rank array in the same way.</p>
+
+<iframe class="click" src="Ec.html"></iframe>
+<p>This is analogous to the decomposition of Outer Product into two applications of Rank from the previous section.</p>
+
+<iframe class="click" src="Ed.html"></iframe>
+<p><a href="https://en.wikipedia.org/wiki/Functor_(functional_programming)">Functors</a> are pretty well-known in the typed functional programming world.</p>
+
+<iframe class="click" src="Ee.html"></iframe>
+<p>Wait, what was that last bit?</p>
+
+<iframe class="click" src="Ef.html"></iframe>
+<p>This transformation of types is known as the <em>reader monad</em> (every (functional programming, not APL) monad is a functor).</p>
+
+<iframe class="click" src="Eg.html"></iframe>
+<p>This combinator is something I often want when using APL; I introduced it to my programming language <a href="https://github.com/mlochbaum/ILanguage">I</a> (brought to you by the letter I) years ago with the name "split-compose" but only found its relation to Outer Product while preparing this talk.</p>
+
+<iframe class="click" src="Eh.html"></iframe>
+<p>The <a href="https://aplwiki.com/index.php?title=Over">Over</a> operator has been added in Dyalog version 18.0. I presented it in <a href="https://dyalog.tv/Dyalog19/?v=czWC4tjwzOQ">a talk</a> at <a href="https://www.dyalog.com/user-meetings/dyalog19.htm">Dyalog '19</a>.</p>
+<p>Another example of a combinator related to the Outer Product is the <a href="https://wiki.haskell.org/Pointfree#The_owl">"owl"</a> combinator, which satisfies <code class='haskell'>((.)$(.)) g x h y = g x (h y) = (outer g id h) x y</code>.</p>
+
+<iframe src="Eq.html"></iframe>
+
+
+<h2>Thinking with Outer Product</h2>
+<iframe src="Fa.html"></iframe>
+<p>We didn't reach this section in the talk. Consequently, no thinking occurred.</p>
+
+<iframe class="click" src="Fb.html"></iframe>
+<p>The <a href="https://en.wikipedia.org/wiki/Cantor_set">Cantor set</a> is a fairly simple construction: the visualisation above is just <a href="Fb.js">eight lines</a> of Javascript with d3. What's important about how we'll approach it in APL isn't that it's shorter, but that it gives us deeper insight.</p>
+
+<iframe class="click" src="Fc.html"></iframe>
+<p><code>⎕R</code> is Dyalog's <a href="https://aplwiki.com/index.php?title=Regex">replace operator</a>, using PCRE regex. It replaces instances matching the left operand string with the right operand; <code>\0</code> on the right is expanded to the first matching group, in this case the entire match.</p>
+<p>We will use the <a href="https://aplwiki.com/index.php?title=Power_(operator)">Power operator</a> for iteration in many of our solutions, as it's a very good fit for the structure of this problem.</p>
+
+<iframe class="click" src="Fd.html"></iframe>
+<p><a href="https://aplwiki.com/wiki/Ravel">Ravel</a> (<code>,</code>) reshapes an array to a vector with the same bound. Like Reshape, it assumes a top-to-bottom, left-to-right <a href="https://aplwiki.com/wiki/Ravel_order">ordering</a>.</p>
+
+<iframe class="click" src="Fe.html"></iframe>
+<p><code>{⍺×⍵}</code> is the same as <code>×</code>, and <code>×⍤0 1</code> on two vectors is an outer product!</p>
+
+<iframe class="click" src="Ff.html"></iframe>
+<p>In other words, Cantor set iterations are flattened outer products of many copies of <code>1 0 1</code>, and we can combine them all starting from the left or the right.</p>
+
+<iframe class="click" src="Fg.html"></iframe>
+<p>Remember that reduction always reduces the rank by one, so reduction on a vector returns a scalar. We want the high-rank array contained in this scalar (its only <a href="https://aplwiki.com/wiki/Element">element</a>), so we use <a href="https://aplwiki.com/wiki/First">First</a> (<code>⊃</code>), the opposite of <a href="https://aplwiki.com/index.php?title=Enclose">Enclose</a>, to get it out before ravelling.</p>
+<p>A "sufficiently smart interpreter" could actually recognise that <code>∘.∧</code> is associative and optimise either the iteration or reduction to take advantage of this.</p>
+
+<iframe class="click" src="Fh.html"></iframe>
+<p>The construction with reduce makes the place values very concrete, but it would also be possible to do this with power multiplying the left side by 10 at each step. That operation isn't associative and would have to be done right to left.</p>
+
+<iframe class="click" src="Fi.html"></iframe>
+<p>Our counting mechanism is very flexible because the base and list of digits are independent.</p>
+<p>That last line looks familiar…</p>
+
+<iframe class="click" src="Fj.html"></iframe>
+<p>Wikipedia makes the <a href="https://en.wikipedia.org/wiki/Cantor_set#Topological_and_analytical_properties">claim</a> that "The geometric mean of the Cantor set is approximately 0.274974", marked as "unreliable source". With APL we can make a quick sanity check on this claim.</p>
+<p>First we use our boolean Cantor set generator, find index of each 1 using <a href="https://aplwiki.com/wiki/Indices">Where</a> (⍸), and convert it to a midpoint by adding 0.5 and scaling. The geometric mean of these midpoints approximates the Cantor set's geometric mean (under an appropriate measure).</p>
+<p>But we can also generate those indices directly using the counting techniques above. This requires an outer product of length-2 rather than length-3 arrays, so it's exponentially more efficient.</p>
+<p>The utility function <code>cmpx</code> compares two expressions, showing the runtime in seconds and an asterisk if the results differ (here they don't). Given that <code>cgm0</code> processes 30 billion intervals, a second and a half isn't bad at all! On the other hand, the asymptotic advantage of the index method, which works with only the 4 million nonempty intervals, is clear.</p>
+
+<iframe src="Fq.html"></iframe>
+<p>(That's not actually a free group's <a href="https://en.wikipedia.org/wiki/Cayley_graph">Cayley graph</a>, but that doesn't prevent it from looking cool.)</a>
+
+<h2>Outer Product Performance</h2>
+<iframe src="Ga.html"></iframe>
+<p>Not performed.</p>
+
+<iframe class="click" src="Gb.html"></iframe>
+<p>These timings compare Dyalog APL's outer products to gcc implementations, compiled for a generic architecture (like the Dyalog interpreter) and natively (on a recent Intel CPU). Dyalog 18.0 uses the same code to calculate its result in this case but memory allocation is changed to make better use of cache. Both native gcc and Dyalog use AVX2 instructions; Dyalog checks for these at runtime so the programmer doesn't even need to know about them.</p>
+<p>Benefits of the array paradigm are apparent with a large left argument and small right argument. There's an advanced algorithm at work here, based on fast methods to copy each left argument element and the entire right argument.</p>
+<p>Dyalog's poor performance when on argument has length 1 is due to an extra copy after the operation. The outer product is reduced to a simple arithmetic function which sometimes optimises better, but then the result shape needs to be changed.</p>
+
+<iframe src="Gc.html"></iframe>
+<p>Dyalog runs close to native C performance but can beat gcc for smaller right arguments, especially when using small integer types.</p>
+
+<iframe src="Gd.html"></iframe>
+<p>Here Dyalog performed poorly for small types. This is because it always assumes the addition will overflow, even though it's easy to calculate using the ranges of both arguments. It has since been improved.</p>
+<p>However, this also highlights one of Dyalog's key performance strengths: it tends to use a type that fits the data range well. Even if Dyalog can't beat gcc on matching types, it's likely to use a smaller type since the programmer doesn't have to specify it. For nontrivial outer products the arguments are always "squeezed" to the smallest possible type.</p>
+
+<iframe src="Ge.html"></iframe>
+<p>Some not-so-great cases. Vectorised multiplication instructions are an absolute mess in x86 and 2-byte multiply is a casualty. It can be fixed but doesn't fit into our current framework well.</p>
+
+<iframe src="Gf.html"></iframe>
+<p>This is not an equivalent comparison. Dyalog supports bit booleans while C doesn't really, so the C code uses byte booleans for its result.</p>
+<p>Packing to byte booleans is slightly harder computationally but the output can then be processed much faster. Version 18.0 takes advantage of this for small right arguments: while version 17.1 uses the same strategy for comparison as the other operations, 18.0 swaps sides and reverses the comparison to compute a transposed result. Then it transposes this with a fast bit matrix transpose (see my <a href="https://dyalog.tv/Dyalog17/?v=2KnrDmZov4U">talk</a> on boolean Transpose at <a href="https://www.dyalog.com/user-meetings/dyalog17.htm">Dyalog '17</a>).</p>
+
+<iframe class="click" src="Gg.html"></iframe>
+<p>APL's advantages are multiplied when we consider the question of boolean outer products, such as the Cantor set. It uses the same general strategies as before, but is able to do up to eight times as much work because it automatically packs eight bits to a byte, something nearly unheard of in other languages.</p>
+<p>In the first measurements, C beats APL for a few cases with longer right arguments because of the work required to align the rows. I really hate it when the best minds at Google, Microsoft, and Red Hat beat me at booleans, so after seeing these measurements I wrote some code to reuse result rows which are already aligned correctly.</p>
+
+<iframe src="Gh.html"></iframe>
+<p>Boolean and (<code>∧</code>) is identical to multiplication both in results and performance, so this is the operation used for computing Cantor set iterations. Each row is either a copy of the right argument or zero; it's a little faster than Not-Equals prior to the row-reuse code because zero rows are easier to write.</p>
+
+<p><br/>As mentioned in the talk, there are several slides I didn't write:</p>
+<ul>
+    <li>Outer Product implementation<ul>
+        <li>Dyalog has fast vectorised code to copy each element of an array a few times (this is an APL primitive, Replicate). It uses this on the left argument and repeats the small right argument to match, so that all the inner code is vectorised. I developed this algorithm by APL; I don't think I would have come up with it otherwise. Even if I had, it's far easier to apply in the implementation of an array language with an Outer Product than in another language without one since the compiler would have to recognise a particular kind of nested loop or map.</li>
+    </ul></li>
+    <li>Usage of Outer Product<ul>
+        <li>A real-world usage of the outer product is to compute membership or index in a small list quickly for each entry of a large list. The number of comparisons is linear in the length of the large list, and comparisons are vectorised. Because of Dyalog's fast boolean operations the results of comparisons can also be combined quickly, and the overall operation is very fast. It's usually possible to beat it (my <a href="https://www.dyalog.com/user-meetings/dyalog18.htm">Dyalog '18</a> <a href="https://dyalog.tv/Dyalog18/?v=paxIkKBzqBU">talk</a> covered this), but it requires some very advanced vector instruction programming.</li>
+        <li>A simple example is to compute the indices of all points in a small circle. The computation for a boolean mask with 1s for each point in the circle can be decomposed so that nearly all the work is confined to a single comparison outer product, and APL has a primitive to get indices from the mask which runs very quickly.</li>
+    </ul></li>
+</ul>
+
+<iframe src="Gq.html"></iframe>
+<p>Look. You and I both know you just jumped down here without loading all those frames. Sure, you can now see "The End" with a nice sparkly background, but do you really feel like you've accomplished anything?</p>
+<p>Well, while you're here…</p>
+<p>Every background image, colors and all, is <a href="bg/outer_back.ijs">generated</a> using an outer product in single line of <a href="https://aplwiki.com/wiki/J">J</a> (some of the lines are long, but nothing preposterous). The image is a shape <code>1080 1920 3</code> array of color intensities between 0 and 1, and the function <code>wr</code> rescales to 0–255 and writes it to a file. Everything else in the script (after <code>0 : 0</code>) is a string literal used as a comment: just some utilities and other ideas that aren't needed to make the images. Images take a few seconds at most to generate.</p>
+
+</body>
